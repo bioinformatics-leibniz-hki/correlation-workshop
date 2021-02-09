@@ -12,8 +12,7 @@ drake::drake_cache(here::here(".drake"))$unlock()
 make(
   # plan
   plan = plan,
-  targets = "coabundances",
-  
+
   parallelism = "clustermq",
   
   # allow multiple works to access global env at the same time

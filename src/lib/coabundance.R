@@ -84,7 +84,16 @@ as_tbl_graph.tbl_df <- function(cor_res, nodes = NULL, method = NULL, ...) {
     stop("cor_res must have at least columns from and to")
   }
   
-  coabundance(edges = cor_res, nodes = nodes, method = method, ...)
+  # keep only one row per comparison
+  reduced_cor_res <-
+    cor_res %>%
+    dplyr::mutate(comp = from %>% map2_chr(to, ~ c(.x, .y) %>% sort() %>% paste0(collapse = "-"))) %>%
+    dplyr::group_by(comp) %>%
+    dplyr::slice(1) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(-comp)
+  
+  coabundance(edges = reduced_cor_res, nodes = nodes, method = method, ...)
 }
 
 as_tbl_graph.pulsar.refit <- function(cor_res, nodes = NULL, method = NULL, ...) {

@@ -55,6 +55,35 @@ coabundance_plan <- drake_plan(
   dynamic = map(subset_abundances)
   ),
   
+  # List of abundance matrices needed for banocc coabundance function
+  # within feature_type (e.g. only taxa or pathways)
+  intra_feature_type_banocc_mats = target({
+    res <-
+      subset_abundances %>%
+      pull(abundance) %>%
+      first() %>%
+      select(sample_id, feature, abundance) %>%
+      
+      # banocc requires abundances summed to 1 for each sample
+      group_by(sample_id) %>%
+      mutate(abundance = abundance / sum(abundance)) %>%
+      ungroup() %>%
+      
+      pivot_wider(
+        names_from = feature,
+        values_from = abundance,
+        values_fill = list(abundance = 0)
+      ) %>%
+      set_rownames(.$sample_id) %>%
+      select(-sample_id) %>%
+      as.matrix()
+    
+    subset_abundances %>%
+      discard(is.list) %>%
+      mutate(mat = list(res))
+  },
+  dynamic = map(subset_abundances)
+  ),
   
   # List of abundance matrices needed for coabundance functions
   # between feature_types (e.g. both taxa and pathways)

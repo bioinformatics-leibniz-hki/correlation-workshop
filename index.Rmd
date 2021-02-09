@@ -380,9 +380,14 @@ Imagine one growing species and many constant ones in a longitudinal dataset.
 The relative abundance of all other taxa are decreaseing, because the library size (total number of reads sequenced) is fixed.
 This happens for all other taxa in the same way introducing lots of false positive correlations.
 BAnOCC is a tool which takes this compositionality into account [@schwager2017bayesian].
+The sum for all abundances must be 1 for each sample.
+Let's use their exampel dataset to get the correlations:
 
 ```{r}
-#library(banocc)
+library(banocc)
+data(compositions_null)
+
+correlate_banocc(compositions_null)
 ```
 
 
