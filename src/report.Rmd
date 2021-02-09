@@ -1,0 +1,119 @@
+---
+title: "Report: Coabundance analysis"
+author: "Daniel Loos"
+date: "`r {date()}`"
+bibliography: literature.bib
+output:
+  html_document:
+    css: report.css
+    dev: png
+    toc: true
+    toc_depth: 4
+    toc_float: true
+theme: united
+df_print: kable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd(here::here()) # working directory is those containing this file, otherwise
+source(here::here("src/setup.R"))
+```
+
+# Methods
+
+```{r}
+plan %>% drake::vis_drake_graph(targets_only = T)
+```
+
+# Abundance
+
+```{r}
+loadd(abundance_heatmap_plot)
+abundance_heatmap_plot
+```
+
+
+# Intra feature type coabundances
+
+## Network properties
+
+```{r}
+loadd(intra_feature_type_coabundances)
+
+intra_feature_type_coabundances %>%
+  mutate(
+    n_nodes = coabundance %>% map_int(~ {.x$graph %>% igraph::gorder()}),
+    n_edges = coabundance %>% map_int(~ {.x$graph %>% igraph::gsize() %>% as.integer()})
+  ) %>%
+  select(-coabundance) %>%
+  filter(n_nodes > 0 | n_edges > 0) %>%
+  arrange(-n_nodes, -n_edges) %>%
+  knitr::kable()
+```
+
+## Networks {.tabset}
+
+```{r}
+loadd(intra_feature_type_network_plots)
+
+intra_feature_type_network_plots %<>%
+  mutate(plot = list(plot, feature_type, disease) %>% pmap(~ ..1 + labs(title = paste0(..2, "-", ..3)))) %>%
+  group_by(method) %>%
+  do(plots = .$plot %>% wrap_plots() + plot_layout(guides = "collect")) %>%
+  deframe()
+```
+
+### Spearman
+
+```{r, echo=FALSE}
+intra_feature_type_network_plots$spearman
+```
+
+### SparCC
+
+```{r, echo=FALSE}
+intra_feature_type_network_plots$sparcc
+```
+
+### MB
+
+```{r, echo=FALSE}
+intra_feature_type_network_plots$mb
+```
+
+
+## Node topology  {.tabset}
+
+```{r node_topology, echo=FALSE}
+loadd(intra_feature_type_topology_plots)
+intra_feature_type_topology_plots %<>% deframe()
+```
+
+content above tabbed region.
+
+### Spearman
+
+```{r, echo=FALSE}
+intra_feature_type_topology_plots$spearman
+```
+
+### SparCC
+
+```{r, echo=FALSE}
+intra_feature_type_topology_plots$sparcc
+```
+
+### MB
+
+```{r, echo=FALSE}
+intra_feature_type_topology_plots$mb
+```
+
+
+# Inter feature type coabundances
+
+```{r}
+loadd(inter_feature_type_coabundances)
+```
+

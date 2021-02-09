@@ -1,0 +1,16 @@
+.tab-content {
+	border: 1px solid #ddd;
+	border-top: none;
+}
+
+a, h1, h2, h3 {
+	color: #2a59a6;
+}
+
+h2, h3 {
+	margin-top: 1.5em;
+}
+
+.html-widget {
+  width: auto !important;
+}

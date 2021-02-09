@@ -1,0 +1,591 @@
+---
+title: "Correlation workshop"
+subtitle: "Micom 2021"
+author: "Daniel Loos"
+date: "`r {date()}`"
+bibliography: src/literature.bib
+output:
+  html_document:
+    css: src/report.css
+    dev: png
+    toc: true
+    toc_depth: 4
+    toc_float: true
+theme: united
+df_print: kable
+---
+
+```{r setup, echo = FALSE, warning = FALSE, include=FALSE}
+knitr::opts_chunk$set(
+  fig.width = 15,
+  fig.height = 10,
+
+  # show output
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+
+  error = TRUE, # do not stop on error and show error message instead
+  cache = FALSE,
+  comment = ""
+)
+
+knitr::opts_knit$set(
+  root.dir = here::here()
+)
+
+setwd(here::here())
+
+source("src/setup.R")
+```
+
+This is an informal and hopefully intuitive way to teach the nature of correlations.
+Please consider textbooks and review-articles for detailed study.
+This project can be downloaded from [GitHub](https://github.com/danlooo/correlation) or using git directly using shell commands:
+
+```{bash, eval = FALSE}
+git clone https://github.com/danlooo/correlation
+```
+
+We can deploy a Docker container containing RStudioServer with all required tools using GNU make:
+
+```{bash, eval = FALSE}
+cd correlation
+make
+```
+
+The prompt will display the URL in which the environment can be accessed.
+The username is `rstudio` with password `password`.
+
+# Computer Science doctorates vs. arcade gaming revenue
+
+Correlation is way to quantify the relationship between two variables.
+This relationship is monotonous and often even linear.
+We start with looking at a dataset from the U.S. Census Bureau and National Science Foundation showing the number of computer science doctorated and the revenue of arcade games in billion USD [@arcade_data].
+
+First, we load the data using functions from the R [tidyverse](https://www.tidyverse.org/) packages:
+
+```{r}
+library(tidyverse)
+
+arcades <- read_csv("data/arcades.csv")
+
+arcades %>% summary()
+```
+
+Let's plot one variable against the other and do a linear regression:
+
+```{r}
+arcades %>%
+  ggplot(aes(doctorates, revenue)) +
+  stat_smooth(method = "lm") +
+  geom_point() +
+  labs(
+    x = "Computer science doctorates",
+    y = "Arcade revenue (billion USD)"
+  )
+```
+
+# Linear correlation
+
+The higher the number of computer science doctorated, the higher is the revenue in the arcade gaming market!
+Correlation values are always rangeing between -1 and 1.
+The value is negative if one variable continiously increases whereas the other decreases and positive if both variables are either increasing or decreasing.
+The value is zero if there is no monotonous relationship.
+
+Let's calculate the linear Pearson's product-moment correlation:
+
+```{r}
+cor.test(~ doctorates + revenue, data = arcades, method = "pearson")
+```
+The correlation coefficient is estimated to be $0.985$ indicating a strong positive realtionship which fits with the plot.
+Most basic statistical tests, including those for correlations, are actually nothing else than linear models [@tests_as_linear].
+The estimated slope of the fitted curve is the stregth of the correlation.
+We have to normalise our data using z-scaling to ensure that the estimated slope is independed of the unit and lies between -1 and 1.
+This will give us values with a mean of 0 and a variance of 1.
+
+```{r}
+arcades_scaled <-
+  arcades %>%
+  mutate(
+    doctorates = doctorates %>% scale(),
+    revenue = revenue %>% scale()
+  )
+
+arcades_scaled %>%
+  pivot_longer(c(doctorates, revenue)) %>%
+  group_by(name) %>%
+  summarise(mean = mean(value), variance = var(value))
+```
+Now we can do a linear regression on one variable using the other as a covariate to get the same correlation coefficient.
+We ignore the intercept here because this tell us nothing about the relationship between the two variables and should be almost 0 due to the scaling:
+
+```{r}
+lm(formula = doctorates ~ 1 + revenue, data = arcades_scaled) %>% summary()
+```
+
+# Ranked correlation
+
+Often, we do not require the relationship to be linear and proportional.
+For instance, this is the case if we want to get the correlation of the abundance of a species with time in an exponentional growing setting.
+Now we don't care about the size of the gradient triangles anymore.
+We can remove this effect by ranking the data and doing the linear model again:
+
+```{r}
+arcades_ranked <-
+  arcades %>%
+  mutate(
+    doctorates = doctorates %>% rank(),
+    revenue = revenue %>% rank()
+  )
+
+
+arcades_ranked %>%
+  ggplot(aes(doctorates, revenue)) +
+  stat_smooth(method = "lm") +
+  geom_point() +
+  coord_fixed() +
+  labs(
+    x = "Computer science doctorates (rank)",
+    y = "Arcade revenue (rank)"
+  )
+```
+```{r}
+lm(formula = doctorates ~ 1 + revenue, data = arcades_ranked) %>% summary()
+```
+
+The test is called Spearman's rank correlation:
+
+```{r}
+cor.test(~ doctorates + revenue, data = arcades, method = "spearman")
+```
+
+Note that the linear correlation coefficent is higher indicating that this relationship is indeed linear:
+$r_{pearson} = 0.985 > r_{spearman} = 0.912$
+
+# Partial correlation
+
+One might ask at this point why there is a relationship between the number of computer science doctorates and the arcade revenue.
+This question is totally valid and the example dataset was chosen on purpose: To illustrate the ubiquitous phenomina called  *spurios correlation*.
+Pearson himself already noted this potential for false positive discoveries [@pearson1897mathematical].
+This is especially the case if a third confounding variable is influencing both variables in the same way.
+Here, this is obviously just a coincidence so the third confounding variable is the time itself.
+
+To mitigate this issue, we control for this third variable by fitting both other variables against the year.
+The residuals of the linear model is what can't be explained by time so we can do the correlation test on the residuals:
+
+```{r}
+doctorates_residuals <- lm(doctorates ~ year, data = arcades_scaled) %>% residuals()
+revenue_residuals <- lm(revenue ~ year, data = arcades_scaled) %>% residuals()
+
+cor.test(~ doctorates_residuals + revenue_residuals, method = "pearson")
+```
+The linear Pearson correlation is now indeed lower indicating that time is a confounding variable and the relationship is just a coincidence.
+This process of doing the test only on a fraction of the total variance (namely the residuals) is called *partial correlation*.
+There is also the function `ppcor::pcor.test` doing this:
+
+```{r}
+library(ppcor)
+pcor.test(
+  x = arcades_scaled$doctorates,
+  y = arcades_scaled$revenue,
+  z = arcades_scaled$year,
+  method = "pearson"
+)
+```
+
+
+# Local correlation
+
+There are relationships between two variables which are statistical depended but can not be discovered using correlation test.
+Correlation implies statistical dependency but not vice versa.
+This is especially the case in which the two variables are not monotonously linked but in a cyclic way.
+Let's simulate the abundance of some predator and some prey species to estimate the relationship of hunting:
+
+```{r}
+hunting <-
+  tibble(time = seq(from = 0, to = 3, length.out = 50)) %>%
+  mutate(
+    predator = sin(time),
+    prey = 1 + cos(time - 0.5)
+  )
+
+hunting %>%
+  pivot_longer(c(predator, prey), names_to = "animal", values_to = "abundance") %>%
+  ggplot(aes(time, abundance, color = animal)) +
+  geom_point()
+```
+
+The pearson correlation is almost zero here:
+
+```{r}
+cor.test(~ predator + prey, data = hunting, method = "pearson")
+```
+
+This is because the relationship between the predator and the prey is not linear:
+
+```{r}
+hunting %>%
+  ggplot(aes(predator, prey)) +
+  geom_point()
+```
+
+But we can still do a correlation test if we just look at a small time window in which the relationship between the predator and the prey can be assumed to be linear:
+
+```{r}
+hunting_local <- hunting %>% filter(time > 1 & time < 2)
+
+hunting_local %>%
+  pivot_longer(c(predator, prey), names_to = "animal", values_to = "abundance") %>%
+  ggplot(aes(time, abundance, color = animal)) +
+  geom_point() +
+  stat_smooth(method = "lm")
+```
+
+```{r}
+cor.test(~ predator + prey, data = hunting_local, method = "pearson")
+```
+Now we can observe the negative local correlation between the predator and the prey.
+An elaborated version of this idea is called Local similarity analysis (LSA) [@ruan2006local]
+
+# Species and pathway abundance in healthy and disesed cohorts
+
+Let's continue with a more realistic dataset.
+We have healthy subjects [@nielsen2014identification] and patients suffering from Colorectal cancer (CRC) [@zeller2014potential].
+This dataset contains whole metagenomic sequencing data which was processed by Humann2 to get abundance profiles for bacterial species and pathways.
+Data was retrieved using the R-package curatedMetagenomicData [@curated_metagenomic_data].
+
+```{r}
+features <- read_csv("data/features.csv")
+samples <- read_csv("data/samples.csv")
+lineages <- read_csv("data/lineages.csv")
+
+samples %>% mutate_if(is.character, as.factor) %>% summary()
+```
+
+The R-package `ComplexHeatmap` can be used to create a heatmap showing the abundance profile.
+Similar samples and species with a high Spearman correlation are displayed in neighboring rows.
+
+```{r}
+library(ComplexHeatmap)
+
+features_mat <-
+  features %>%
+  pivot_longer(-sample_id, names_to = "feature", values_to = "abundance") %>%
+  left_join(lineages) %>%
+  group_by(feature) %>%
+  filter(kingdom == "Bacteria" & var(abundance) > 0) %>%
+  mutate(abundance = abundance %>% scale() %>% pluck(1)) %>%
+
+  # long table to wide matrix
+  select(sample_id, feature, abundance) %>%
+  pivot_wider(names_from = feature, values_from = abundance) %>%
+  select(-sample_id) %>%
+  as.matrix()
+
+Heatmap(
+  matrix = features_mat,
+  name = "Abundance (z-scaled)",
+
+  column_title = "Species",
+  clustering_distance_columns = "spearman",
+  show_column_names = FALSE,
+
+  row_title = "Sample",
+  clustering_distance_rows = "spearman",
+
+  right_annotation = HeatmapAnnotation(
+    which = "row",
+    Disease = samples$disease,
+    Age = samples$age,
+    Country = samples$country,
+    Gender = samples$gender
+  )
+)
+```
+
+
+# Sparse correlation
+
+Count data in ecology has often many zeros.
+This zero-inflation violates the assumption of a linear model.
+It assumes a normal distribution of the residuals (Gauss–Markov theorem).
+
+We have more absent than prevalent species:
+
+```{r}
+features %>%
+  pivot_longer(-sample_id, names_to = "feature", values_to = "abundance") %>%
+  group_by(sample_id, is_prevalent = abundance > 0) %>%
+  count() %>%
+  filter(!is.na(is_prevalent)) %>%
+  ggplot(aes(is_prevalent, n)) +
+  geom_boxplot() +
+  labs(x = "is prevalent", y = "Taxa")
+```
+
+The majority of the taxa are not present in an average sample and only in a few samples.
+
+Methods like SparCC take this into account [@friedman2012inferring].
+We use the function `correlate_spiec_easi_sparcc` inside the source directory which is based on the implementation in SpiecEasi [@layeghifard2018constructing].
+This allows us to get an object of class [tidygraph](https://tidygraph.data-imaginist.com/).
+
+```{r}
+# load  libraries and functions
+source("src/setup.R")
+
+features_sparcc <-
+  lineages %>%
+  filter(kingdom == "Bacteria") %>%
+  pull(feature) %>%
+  head(20)
+
+mat_sparcc <-
+  features %>%
+  pivot_longer(-sample_id, names_to = "feature", values_to = "abundance") %>%
+  left_join(lineages) %>%
+  filter(feature %in% features_sparcc) %>%
+  # long table to wide matrix
+  select(sample_id, feature, abundance) %>%
+  pivot_wider(names_from = feature, values_from = abundance, values_fill = list(abundance = 0)) %>%
+  select(-sample_id) %>%
+  as.matrix()
+
+res_sparcc <- correlate_spiec_easi_sparcc(
+  data = mat_sparcc,
+  nodes = lineages,
+  iterations = 10,
+  bootstraps = 20
+  )
+
+res_sparcc
+```
+Let's plot the network and use functions of the package `ggraph` :
+
+```{r}
+library(ggraph)
+
+res_sparcc %>%
+  correlate_plot() +
+  geom_node_point(aes(color = phylum), size = 10)
+  geom_node_text(aes(label = feature))
+```
+
+
+# Compositional correlation
+
+Sequencing data is compositional: Instead of counting the species in a absolute way, one just have proportions of the reads assigned to a particular taxon.
+This can have severe implications [@gloor2017microbiome].
+Imagine one growing species and many constant ones in a longitudinal dataset.
+The relative abundance of all other taxa are decreaseing, because the library size (total number of reads sequenced) is fixed.
+This happens for all other taxa in the same way introducing lots of false positive correlations.
+BAnOCC is a tool which takes this compositionality into account [@schwager2017bayesian].
+
+```{r}
+#library(banocc)
+```
+
+
+# Same correlation
+
+This dinosaur dataset tells us that one can create almost any pattern having the same statistical values including the correlation [@dinosaur_stats; @dinosaur_stats2]:
+
+![](https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif)
+
+
+# Drake workflow
+
+Analyses usually consists if multiple steps which are dependend on each other.
+We can write this workflow as a tree and use the workflow management R package [drake](https://docs.ropensci.org/drake/).
+This has several advantages:
+
+- running multiple steps (called targets in drake) in parallel
+- Saving intermediate results
+- Rerun only targets which actually changed
+
+```{r}
+correlation_plan <- drake_plan(
+  features = file_in("data/features.csv") %>% read_csv(),
+  lineages = file_in("data/lineages.csv") %>% read_csv,
+  feature_types = c("taxon", "pathway"),
+  cor_methods = c("spearman", "pearson"),
+  
+  matricies = target({
+    matrix <-
+      features %>%
+      pivot_longer(-sample_id, names_to = "feature", values_to = "abundance") %>%
+      left_join(lineages) %>%
+      
+      # get current feature type
+      filter(feature_type == feature_types) %>%
+      select(sample_id, feature, abundance) %>%
+      
+      # subsetting
+      sample_frac(0.05) %>%
+      
+      # long table to wide matrix
+      pivot_wider(
+        names_from = feature,
+        values_from = abundance,
+        values_fill = list(abundance = 0)
+      ) %>%
+      select(-sample_id) %>%
+      as.matrix()
+    
+    tibble(feature_type = feature_types, matrix = list(matrix))
+  },
+  dynamic = map(feature_types)
+  ),
+  
+  correlations = target({
+    correlation <- correlate(data = matricies$matrix[[1]], method = cor_methods)
+    
+    tibble(
+      feature_type = feature_types,
+      cor_method = cor_methods,
+      correlation = list(correlation)
+    )
+  },
+  dynamic = cross(feature_types, cor_methods)
+  )
+)
+
+correlation_plan %>% make()
+```
+
+Results were stored on hard disk.
+They can be loaded into the current R session:
+
+```{r}
+loadd(correlations)
+
+correlations
+```
+
+A more elaborated workflow is part of this repository.
+It includes also the part of getting the data.
+Drake plans are tibbles of steps and can be plotted:
+
+```{r}
+plan %>% plot()
+```
+
+The targets can be made by running the script `analyze.R`.
+It is recommended to put this as a background job of RStudio to run it in an isolated environment.
+
+```{r, eval=FALSE}
+rstudioapi::jobRunScript("analyze.R")
+```
+
+
+# No correlation but covariance
+
+Correlation assumes that the pair of two variables are *conditionally independend* from all others.
+But often, an interaction is only there in a presence or absence if a third variable.
+SpiecEasi tries to account for this [@kurtz2015sparse].
+An application of this is finding realationships between features of different types.
+Let's load both species and pathways from the Colorectal Cancer (CRC) cohort from the main plan in this repository (20 samples and 20 features each).
+
+```{r}
+loadd(inter_feature_type_mats)
+
+matricies_crc <-
+  inter_feature_type_mats %>%
+  filter(disease == "CRC") %>%
+  pull(mat) %>%
+  first()
+
+matricies_crc %>% map(dim)
+```
+Let's estimate covariance relationships:
+
+```{r}
+crc_spiec_easi <- matricies_crc %>% correlate_spiec_easi(method = "mb", nodes = lineages)
+crc_spiec_easi
+```
+```{r}
+crc_spiec_easi %>% correlate_plot()
+```
+
+These are the relationships found between a species and a pathway:
+
+```{r}
+crc_spiec_easi %>%
+  activate(edges) %>%
+  as_tibble() %>%
+  filter(from_feature_type != to_feature_type) %>%
+  select(from_feature, to_feature, estimate)
+```
+
+# Network analysis
+
+These correlation networks were created by the main drake workflow:
+
+```{r}
+loadd(coabundances)
+
+coabundances
+```
+
+The tidygraph package provides functions to calculate node and edge attributes based on the topological structure:
+
+```{r}
+coabundances$coabundance[[1]] %>%
+  activate(nodes) %>%
+  mutate(
+    # number of edges connected to a node
+    degree = centrality_degree(),
+    
+    # Kleinberg's hub centrality scores
+    hub = centrality_hub()
+  ) %>%
+  as_tibble() %>%
+  select(feature, degree, hub)
+```
+Objects created by `correlate` are shipped with basic topology metrics.
+We can extract them to make a comparsion plot:
+
+```{r}
+coabundances %>%
+  filter(feature_type == "all") %>%
+  select(-feature_type) %>%
+  mutate(nodes = coabundance %>% map(~ .x %>% activate(nodes) %>% as_tibble)) %>%
+  select(-coabundance) %>%
+  unnest(nodes) %>%
+  pivot_longer(cols = c(degree, closeness, betweeness), names_to = "metric") %>%
+
+  ggplot(aes(feature_type, value)) +
+      geom_boxplot() +
+      facet_wrap(~metric, scales = "free_y") +
+      labs(x = "Feature type", y = "Topology score")
+```
+
+Or compare taxonomic correlations between healthy and diseased cohorts:
+
+```{r}
+coabundances %>%
+  filter(feature_type == "taxon" & method == "sparcc") %>%
+  select(-feature_type) %>%
+  mutate(nodes = coabundance %>% map(~ .x %>% activate(nodes) %>% as_tibble)) %>%
+  select(-coabundance) %>%
+  unnest(nodes) %>%
+  pivot_longer(cols = c(degree, closeness, betweeness), names_to = "metric") %>%
+  
+  ggplot(aes(disease, value)) +
+    geom_boxplot() +
+    ggpubr::stat_compare_means() +
+    facet_wrap(~metric, scales = "free_y")
+```
+
+
+# Issues with correlations
+
+- Correlations are always *pair-wise*. We can't estiamte the correlation between a set of more than two variables.
+- 
+- Correlation implies statistical depencence but not vice versa. 
+
+## Reviews
+- Microbiome datasets are compositional: and this is not optional [@gloor2017microbiome]
+- Correlation detection strategies in microbial data sets vary widely in sensitivity and precision. [@weiss2016correlation]
+
+# References
