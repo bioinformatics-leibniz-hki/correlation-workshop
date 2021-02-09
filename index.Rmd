@@ -41,16 +41,16 @@ source("src/setup.R")
 
 This is an informal and hopefully intuitive way to teach the nature of correlations.
 Please consider textbooks and review-articles for detailed study.
-This project can be downloaded from [GitHub](https://github.com/danlooo/correlation) or using git directly using shell commands:
+This project can be downloaded from [GitHub](https://github.com/bioinformatics-leibniz-hki/correlation-workshop) or using git directly using shell commands:
 
 ```{bash, eval = FALSE}
-git clone https://github.com/danlooo/correlation
+git clone https://github.com/bioinformatics-leibniz-hki/correlation-workshop
 ```
 
 We can deploy a Docker container containing RStudioServer with all required tools using GNU make:
 
 ```{bash, eval = FALSE}
-cd correlation
+cd correlation-workshop
 make
 ```
 
