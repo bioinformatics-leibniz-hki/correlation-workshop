@@ -11,7 +11,7 @@ plots_plan <- drake_plan(
     abundances_tbl <-
       subset_abundances %>%
       unnest(abundance) %>%
-      
+
       # normalization
       group_by(sample_id, feature_type) %>%
       mutate(abundance = scale(abundance)) %>%
@@ -41,7 +41,7 @@ plots_plan <- drake_plan(
       tibble(sample_id = rownames(abundance_mat)) %>%
       left_join(samples, by = "sample_id")
     
-    viridis_col <- circlize::colorRamp2(c(-5, 0, 5), c("#440154FF", "#21908CFF", "#FDE725FF")) 
+    viridis_col <- circlize::colorRamp2(c(-5, 0, 5), c("#440154FF", "#21908CFF", "#FDE725FF"))
     
     ComplexHeatmap::Heatmap(
       matrix = abundance_mat %>% t(),
@@ -75,7 +75,7 @@ plots_plan <- drake_plan(
         # get one graph containing all edges
         mutate(
           graph = list(coabundance, disease, feature_type) %>% pmap(~ {
-            ..1$graph %>%
+            ..1 %>%
               activate(nodes) %>%
               mutate(disease = ..2, feature_type = ..3)
           })
@@ -86,7 +86,7 @@ plots_plan <- drake_plan(
         # get nodes table
         activate(nodes) %>%
         as_tibble() %>%
-        select(c(name, feature_type, disease, node_topology_metrics)) %>%
+        select(c(feature, feature_type, disease, node_topology_metrics)) %>%
         pivot_longer(cols = node_topology_metrics, names_to = "metric", values_to = "value") %>%
 
         # plot
@@ -114,9 +114,9 @@ plots_plan <- drake_plan(
     {
        res <- switch (intra_feature_type_coabundances$feature_type[[1]],
          "taxon" = {
-            intra_feature_type_coabundances$coabundance[[1]]$graph %>%
+            intra_feature_type_coabundances$coabundance[[1]] %>%
                activate(nodes) %>%
-               left_join(lineages, by = c("name" = "feature")) %>%
+               left_join(lineages) %>%
                to_directed() %>%
                ggraph(layout = "igraph", algorithm = "fr", weights = abs(estimate)) +
                geom_node_point(aes(color = phylum)) +
@@ -126,9 +126,8 @@ plots_plan <- drake_plan(
                theme_void()
          },
          "pathway" = {
-            intra_feature_type_coabundances$coabundance[[1]]$graph %>%
+            intra_feature_type_coabundances$coabundance[[1]] %>%
                activate(nodes) %>%
-               mutate(feature = name) %>%
                to_directed() %>%
                ggraph(layout = "igraph", algorithm = "fr", weights = abs(estimate)) +
                geom_node_point() +

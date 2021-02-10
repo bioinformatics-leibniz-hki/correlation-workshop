@@ -7,6 +7,8 @@
 # laod libraries 
 # The order matters: put most important
 # packages at the bottom to overwrite the namespace
+library(banocc)
+library(SpiecEasi)
 library(curatedMetagenomicData)
 library(phyloseq)
 library(SpiecEasi)
