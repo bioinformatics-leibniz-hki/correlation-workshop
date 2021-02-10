@@ -396,23 +396,6 @@ This dinosaur dataset tells us that one can create almost any pattern having the
 
 ![](https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif)
 
-# Ensemble correlation
-
-Often, an edge is only considered if it is significant in multiple correlation methods.
-These *ensemble approaches* tend to be more robust having less false positive interactions:
-
-```{r}
-loadd(coabundances)
-
-graphs <-
-  coabundances %>%
-  filter(feature_type == "pathway" & disease == "CRC") %>%
-  select(method, coabundance) %>%
-  deframe()
-
-ensemble_coabundance(graphs$spearman, graphs$banocc, method = "intersection")
-```
-
 
 # Which correlation?
 
@@ -503,6 +486,22 @@ It is recommended to put this as a background job of RStudio to run it in an iso
 rstudioapi::jobRunScript("analyze.R")
 ```
 
+# Ensemble correlation
+
+Often, an edge is only considered if it is significant in multiple correlation methods.
+These *ensemble approaches* tend to be more robust having less false positive interactions:
+
+```{r}
+loadd(coabundances)
+
+graphs <-
+  coabundances %>%
+  filter(feature_type == "pathway" & disease == "CRC") %>%
+  select(method, coabundance) %>%
+  deframe()
+
+ensemble_coabundance(graphs$spearman, graphs$banocc, method = "intersection")
+```
 
 # No correlation but covariance
 
