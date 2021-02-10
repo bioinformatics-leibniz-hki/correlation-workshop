@@ -4,7 +4,15 @@
          xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
          http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
 <!-- Created by igraph -->
-  <key id="v_name" for="node" attr.name="name" attr.type="string"/>
+  <key id="v_feature" for="node" attr.name="feature" attr.type="string"/>
+  <key id="v_feature_type" for="node" attr.name="feature_type" attr.type="string"/>
+  <key id="v_kingdom" for="node" attr.name="kingdom" attr.type="string"/>
+  <key id="v_phylum" for="node" attr.name="phylum" attr.type="string"/>
+  <key id="v_order" for="node" attr.name="order" attr.type="string"/>
+  <key id="v_class" for="node" attr.name="class" attr.type="string"/>
+  <key id="v_family" for="node" attr.name="family" attr.type="string"/>
+  <key id="v_genus" for="node" attr.name="genus" attr.type="string"/>
+  <key id="v_species" for="node" attr.name="species" attr.type="string"/>
   <key id="v_degree" for="node" attr.name="degree" attr.type="double"/>
   <key id="v_component" for="node" attr.name="component" attr.type="double"/>
   <key id="v_closeness" for="node" attr.name="closeness" attr.type="double"/>
@@ -13,735 +21,1533 @@
   <key id="e_n" for="edge" attr.name="n" attr.type="double"/>
   <key id="e_p.value" for="edge" attr.name="p.value" attr.type="double"/>
   <key id="e_q.value" for="edge" attr.name="q.value" attr.type="double"/>
+  <key id="e_from_feature" for="edge" attr.name="from_feature" attr.type="string"/>
+  <key id="e_from_feature_type" for="edge" attr.name="from_feature_type" attr.type="string"/>
+  <key id="e_from_kingdom" for="edge" attr.name="from_kingdom" attr.type="string"/>
+  <key id="e_from_phylum" for="edge" attr.name="from_phylum" attr.type="string"/>
+  <key id="e_from_order" for="edge" attr.name="from_order" attr.type="string"/>
+  <key id="e_from_class" for="edge" attr.name="from_class" attr.type="string"/>
+  <key id="e_from_family" for="edge" attr.name="from_family" attr.type="string"/>
+  <key id="e_from_genus" for="edge" attr.name="from_genus" attr.type="string"/>
+  <key id="e_from_species" for="edge" attr.name="from_species" attr.type="string"/>
   <key id="e_from_degree" for="edge" attr.name="from_degree" attr.type="double"/>
   <key id="e_from_component" for="edge" attr.name="from_component" attr.type="double"/>
   <key id="e_from_closeness" for="edge" attr.name="from_closeness" attr.type="double"/>
   <key id="e_from_betweeness" for="edge" attr.name="from_betweeness" attr.type="double"/>
+  <key id="e_to_feature" for="edge" attr.name="to_feature" attr.type="string"/>
+  <key id="e_to_feature_type" for="edge" attr.name="to_feature_type" attr.type="string"/>
+  <key id="e_to_kingdom" for="edge" attr.name="to_kingdom" attr.type="string"/>
+  <key id="e_to_phylum" for="edge" attr.name="to_phylum" attr.type="string"/>
+  <key id="e_to_order" for="edge" attr.name="to_order" attr.type="string"/>
+  <key id="e_to_class" for="edge" attr.name="to_class" attr.type="string"/>
+  <key id="e_to_family" for="edge" attr.name="to_family" attr.type="string"/>
+  <key id="e_to_genus" for="edge" attr.name="to_genus" attr.type="string"/>
+  <key id="e_to_species" for="edge" attr.name="to_species" attr.type="string"/>
   <key id="e_to_degree" for="edge" attr.name="to_degree" attr.type="double"/>
   <key id="e_to_component" for="edge" attr.name="to_component" attr.type="double"/>
   <key id="e_to_closeness" for="edge" attr.name="to_closeness" attr.type="double"/>
   <key id="e_to_betweeness" for="edge" attr.name="to_betweeness" attr.type="double"/>
   <graph id="G" edgedefault="undirected">
     <node id="n0">
-      <data key="v_name">(5Z)-dodec-5-enoate biosynthesis</data>
-      <data key="v_degree">6</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0232558139534884</data>
-      <data key="v_betweeness">1.2</data>
-    </node>
-    <node id="n1">
-      <data key="v_name">6-hydroxymethyl-dihydropterin diphosphate biosynthesis III (Chlamydia)</data>
-      <data key="v_degree">6</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0232558139534884</data>
-      <data key="v_betweeness">1.2</data>
-    </node>
-    <node id="n2">
-      <data key="v_name">8-amino-7-oxononanoate biosynthesis I</data>
-      <data key="v_degree">6</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0238095238095238</data>
-      <data key="v_betweeness">5.08333333333333</data>
-    </node>
-    <node id="n3">
-      <data key="v_name">adenosine deoxyribonucleotides de novo biosynthesis II</data>
-      <data key="v_degree">8</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.03125</data>
-      <data key="v_betweeness">74.5560606060606</data>
-    </node>
-    <node id="n4">
-      <data key="v_name">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
-      <data key="v_degree">7</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0263157894736842</data>
-      <data key="v_betweeness">5.13939393939394</data>
-    </node>
-    <node id="n5">
-      <data key="v_name">4-deoxy-L-threo-hex-4-enopyranuronate degradation</data>
-      <data key="v_degree">6</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0227272727272727</data>
-      <data key="v_betweeness">4.13939393939394</data>
-    </node>
-    <node id="n6">
-      <data key="v_name">adenosylcobalamin salvage from cobinamide I</data>
-      <data key="v_degree">6</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0256410256410256</data>
-      <data key="v_betweeness">3.5</data>
-    </node>
-    <node id="n7">
-      <data key="v_name">5-aminoimidazole ribonucleotide biosynthesis I</data>
-      <data key="v_degree">7</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0277777777777778</data>
-      <data key="v_betweeness">50.4848484848485</data>
-    </node>
-    <node id="n8">
-      <data key="v_name">5-aminoimidazole ribonucleotide biosynthesis II</data>
-      <data key="v_degree">5</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0217391304347826</data>
-      <data key="v_betweeness">7.61363636363637</data>
-    </node>
-    <node id="n9">
-      <data key="v_name">4-aminobutanoate degradation V</data>
-      <data key="v_degree">3</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.02</data>
-      <data key="v_betweeness">4.34848484848485</data>
-    </node>
-    <node id="n10">
-      <data key="v_name">6-hydroxymethyl-dihydropterin diphosphate biosynthesis I</data>
-      <data key="v_degree">3</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0163934426229508</data>
-      <data key="v_betweeness">0</data>
-    </node>
-    <node id="n11">
-      <data key="v_name">acetyl-CoA fermentation to butanoate II</data>
-      <data key="v_degree">3</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.024390243902439</data>
-      <data key="v_betweeness">59</data>
-    </node>
-    <node id="n12">
-      <data key="v_name">all-trans-farnesol biosynthesis</data>
-      <data key="v_degree">2</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0185185185185185</data>
-      <data key="v_betweeness">32</data>
-    </node>
-    <node id="n13">
-      <data key="v_name">acetylene degradation</data>
-      <data key="v_degree">3</data>
-      <data key="v_component">1</data>
-      <data key="v_closeness">0.0238095238095238</data>
-      <data key="v_betweeness">10.8484848484848</data>
-    </node>
-    <node id="n14">
-      <data key="v_name">adenine and adenosine salvage III</data>
+      <data key="v_feature">adenosine ribonucleotides de novo biosynthesis</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
       <data key="v_degree">4</data>
       <data key="v_component">1</data>
-      <data key="v_closeness">0.0208333333333333</data>
-      <data key="v_betweeness">4.27272727272727</data>
+      <data key="v_closeness">0.0123456790123457</data>
+      <data key="v_betweeness">4.33333333333333</data>
     </node>
-    <node id="n15">
-      <data key="v_name">adenosine nucleotides degradation II</data>
-      <data key="v_degree">1</data>
+    <node id="n1">
+      <data key="v_feature">adenine and adenosine salvage III</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">4</data>
       <data key="v_component">1</data>
-      <data key="v_closeness">0.0172413793103448</data>
+      <data key="v_closeness">0.0123456790123457</data>
+      <data key="v_betweeness">4.33333333333333</data>
+    </node>
+    <node id="n2">
+      <data key="v_feature">5-aminoimidazole ribonucleotide biosynthesis II</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">4</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0123456790123457</data>
+      <data key="v_betweeness">4.33333333333333</data>
+    </node>
+    <node id="n3">
+      <data key="v_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis I</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">3</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0106382978723404</data>
       <data key="v_betweeness">0</data>
     </node>
-    <node id="n16">
-      <data key="v_name">adenosine ribonucleotides de novo biosynthesis</data>
-      <data key="v_degree">5</data>
+    <node id="n4">
+      <data key="v_feature">5-aminoimidazole ribonucleotide biosynthesis I</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">7</data>
       <data key="v_component">1</data>
-      <data key="v_closeness">0.0217391304347826</data>
-      <data key="v_betweeness">7.61363636363637</data>
+      <data key="v_closeness">0.0142857142857143</data>
+      <data key="v_betweeness">49</data>
     </node>
-    <node id="n17">
-      <data key="v_name">anaerobic energy metabolism (invertebrates, cytosol)</data>
+    <node id="n5">
+      <data key="v_feature">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">7</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0140845070422535</data>
+      <data key="v_betweeness">5.36666666666667</data>
+    </node>
+    <node id="n6">
+      <data key="v_feature">4-deoxy-L-threo-hex-4-enopyranuronate degradation</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">6</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.012987012987013</data>
+      <data key="v_betweeness">4.36666666666667</data>
+    </node>
+    <node id="n7">
+      <data key="v_feature">adenosine nucleotides degradation II</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
       <data key="v_degree">1</data>
       <data key="v_component">1</data>
-      <data key="v_closeness">0.0116279069767442</data>
+      <data key="v_closeness">0.0112359550561798</data>
+      <data key="v_betweeness">0</data>
+    </node>
+    <node id="n8">
+      <data key="v_feature">acetylene degradation</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">1</data>
+      <data key="v_component">2</data>
+      <data key="v_closeness">0.00308641975308642</data>
+      <data key="v_betweeness">0</data>
+    </node>
+    <node id="n9">
+      <data key="v_feature">adenosylcobalamin salvage from cobinamide I</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">6</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0138888888888889</data>
+      <data key="v_betweeness">3.5</data>
+    </node>
+    <node id="n10">
+      <data key="v_feature">(5Z)-dodec-5-enoate biosynthesis</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">6</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0131578947368421</data>
+      <data key="v_betweeness">1.2</data>
+    </node>
+    <node id="n11">
+      <data key="v_feature">8-amino-7-oxononanoate biosynthesis I</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">5</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.012987012987013</data>
+      <data key="v_betweeness">1</data>
+    </node>
+    <node id="n12">
+      <data key="v_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis III (Chlamydia)</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">6</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0131578947368421</data>
+      <data key="v_betweeness">1.2</data>
+    </node>
+    <node id="n13">
+      <data key="v_feature">adenosine deoxyribonucleotides de novo biosynthesis II</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">7</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0149253731343284</data>
+      <data key="v_betweeness">59.3666666666667</data>
+    </node>
+    <node id="n14">
+      <data key="v_feature">anaerobic energy metabolism (invertebrates, cytosol)</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">1</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.00884955752212389</data>
+      <data key="v_betweeness">0</data>
+    </node>
+    <node id="n15">
+      <data key="v_feature">anhydromuropeptides recycling</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">2</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0102040816326531</data>
+      <data key="v_betweeness">15</data>
+    </node>
+    <node id="n16">
+      <data key="v_feature">acetyl-CoA fermentation to butanoate II</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">3</data>
+      <data key="v_component">1</data>
+      <data key="v_closeness">0.0135135135135135</data>
+      <data key="v_betweeness">51</data>
+    </node>
+    <node id="n17">
+      <data key="v_feature">4-aminobutanoate degradation V</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
+      <data key="v_degree">1</data>
+      <data key="v_component">2</data>
+      <data key="v_closeness">0.00308641975308642</data>
       <data key="v_betweeness">0</data>
     </node>
     <node id="n18">
-      <data key="v_name">anhydromuropeptides recycling</data>
+      <data key="v_feature">all-trans-farnesol biosynthesis</data>
+      <data key="v_feature_type">pathway</data>
+      <data key="v_kingdom">NA</data>
+      <data key="v_phylum">NA</data>
+      <data key="v_order">NA</data>
+      <data key="v_class">NA</data>
+      <data key="v_family">NA</data>
+      <data key="v_genus">NA</data>
+      <data key="v_species">NA</data>
       <data key="v_degree">2</data>
       <data key="v_component">1</data>
-      <data key="v_closeness">0.0144927536231884</data>
-      <data key="v_betweeness">17</data>
+      <data key="v_closeness">0.0117647058823529</data>
+      <data key="v_betweeness">28</data>
     </node>
-    <edge source="n0" target="n1">
-      <data key="e_estimate">0.690225563909774</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.000756394837833962</data>
-      <data key="e_q.value">0.0119106168471868</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">6</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0232558139534884</data>
-      <data key="e_to_betweeness">1.2</data>
-    </edge>
-    <edge source="n0" target="n2">
-      <data key="e_estimate">0.942857142857143</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">5.00932628710871e-10</data>
-      <data key="e_q.value">9.51771994550654e-08</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">6</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0238095238095238</data>
-      <data key="e_to_betweeness">5.08333333333333</data>
-    </edge>
-    <edge source="n0" target="n3">
-      <data key="e_estimate">0.565413533834586</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00937431775063158</data>
-      <data key="e_q.value">0.0614179438834483</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">8</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.03125</data>
-      <data key="e_to_betweeness">74.5560606060606</data>
-    </edge>
-    <edge source="n0" target="n4">
+    <edge source="n5" target="n10">
       <data key="e_estimate">0.590977443609023</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.00607015369927577</data>
       <data key="e_q.value">0.0450382394991527</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">7</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0263157894736842</data>
-      <data key="e_to_betweeness">5.13939393939394</data>
-    </edge>
-    <edge source="n4" target="n5">
-      <data key="e_estimate">0.58796992481203</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00640017087619538</data>
-      <data key="e_q.value">0.0450382394991527</data>
+      <data key="e_from_feature">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
       <data key="e_from_degree">7</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0263157894736842</data>
-      <data key="e_from_betweeness">5.13939393939394</data>
+      <data key="e_from_closeness">0.0140845070422535</data>
+      <data key="e_from_betweeness">5.36666666666667</data>
+      <data key="e_to_feature">(5Z)-dodec-5-enoate biosynthesis</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
       <data key="e_to_degree">6</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0227272727272727</data>
-      <data key="e_to_betweeness">4.13939393939394</data>
+      <data key="e_to_closeness">0.0131578947368421</data>
+      <data key="e_to_betweeness">1.2</data>
     </edge>
-    <edge source="n1" target="n4">
-      <data key="e_estimate">0.768421052631579</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">7.5718811752612e-05</data>
-      <data key="e_q.value">0.00205522489042804</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">7</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0263157894736842</data>
-      <data key="e_to_betweeness">5.13939393939394</data>
-    </edge>
-    <edge source="n2" target="n4">
-      <data key="e_estimate">0.714285714285714</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.000403252594744163</data>
-      <data key="e_q.value">0.00696527209103555</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0238095238095238</data>
-      <data key="e_from_betweeness">5.08333333333333</data>
-      <data key="e_to_degree">7</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0263157894736842</data>
-      <data key="e_to_betweeness">5.13939393939394</data>
-    </edge>
-    <edge source="n3" target="n4">
-      <data key="e_estimate">0.654135338345865</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00175519541284319</data>
-      <data key="e_q.value">0.0196168899082474</data>
-      <data key="e_from_degree">8</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.03125</data>
-      <data key="e_from_betweeness">74.5560606060606</data>
-      <data key="e_to_degree">7</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0263157894736842</data>
-      <data key="e_to_betweeness">5.13939393939394</data>
-    </edge>
-    <edge source="n4" target="n6">
-      <data key="e_estimate">0.46015037593985</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.0412007178019544</data>
-      <data key="e_q.value">0.200721445701829</data>
-      <data key="e_from_degree">7</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0263157894736842</data>
-      <data key="e_from_betweeness">5.13939393939394</data>
-      <data key="e_to_degree">6</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0256410256410256</data>
-      <data key="e_to_betweeness">3.5</data>
-    </edge>
-    <edge source="n0" target="n5">
+    <edge source="n6" target="n10">
       <data key="e_estimate">0.574436090225564</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.008072760656054</data>
       <data key="e_q.value">0.0547794473089379</data>
+      <data key="e_from_feature">4-deoxy-L-threo-hex-4-enopyranuronate degradation</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
       <data key="e_from_degree">6</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
+      <data key="e_from_closeness">0.012987012987013</data>
+      <data key="e_from_betweeness">4.36666666666667</data>
+      <data key="e_to_feature">(5Z)-dodec-5-enoate biosynthesis</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
       <data key="e_to_degree">6</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0227272727272727</data>
-      <data key="e_to_betweeness">4.13939393939394</data>
+      <data key="e_to_closeness">0.0131578947368421</data>
+      <data key="e_to_betweeness">1.2</data>
     </edge>
-    <edge source="n1" target="n5">
-      <data key="e_estimate">0.454135338345865</data>
+    <edge source="n9" target="n10">
+      <data key="e_estimate">0.479699248120301</data>
       <data key="e_n">20</data>
-      <data key="e_p.value">0.0442791041628947</data>
-      <data key="e_q.value">0.205195848559756</data>
+      <data key="e_p.value">0.0323260692002143</data>
+      <data key="e_q.value">0.180645680824727</data>
+      <data key="e_from_feature">adenosylcobalamin salvage from cobinamide I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
       <data key="e_from_degree">6</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
+      <data key="e_from_closeness">0.0138888888888889</data>
+      <data key="e_from_betweeness">3.5</data>
+      <data key="e_to_feature">(5Z)-dodec-5-enoate biosynthesis</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
       <data key="e_to_degree">6</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0227272727272727</data>
-      <data key="e_to_betweeness">4.13939393939394</data>
+      <data key="e_to_closeness">0.0131578947368421</data>
+      <data key="e_to_betweeness">1.2</data>
     </edge>
-    <edge source="n2" target="n5">
-      <data key="e_estimate">0.64812030075188</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00199871355911285</data>
-      <data key="e_q.value">0.0199871355911285</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0238095238095238</data>
-      <data key="e_from_betweeness">5.08333333333333</data>
-      <data key="e_to_degree">6</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0227272727272727</data>
-      <data key="e_to_betweeness">4.13939393939394</data>
-    </edge>
-    <edge source="n5" target="n6">
-      <data key="e_estimate">0.682706766917293</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.000909908632472645</data>
-      <data key="e_q.value">0.0123487600121287</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0227272727272727</data>
-      <data key="e_from_betweeness">4.13939393939394</data>
-      <data key="e_to_degree">6</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0256410256410256</data>
-      <data key="e_to_betweeness">3.5</data>
-    </edge>
-    <edge source="n4" target="n7">
+    <edge source="n4" target="n5">
       <data key="e_estimate">0.44812030075188</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.0475317357506642</data>
       <data key="e_q.value">0.215024518872052</data>
+      <data key="e_from_feature">5-aminoimidazole ribonucleotide biosynthesis I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
       <data key="e_from_degree">7</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0263157894736842</data>
-      <data key="e_from_betweeness">5.13939393939394</data>
+      <data key="e_from_closeness">0.0142857142857143</data>
+      <data key="e_from_betweeness">49</data>
+      <data key="e_to_feature">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
       <data key="e_to_degree">7</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0277777777777778</data>
-      <data key="e_to_betweeness">50.4848484848485</data>
+      <data key="e_to_closeness">0.0140845070422535</data>
+      <data key="e_to_betweeness">5.36666666666667</data>
     </edge>
-    <edge source="n5" target="n7">
-      <data key="e_estimate">0.457142857142857</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.0427185106278771</data>
-      <data key="e_q.value">0.202912925482416</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0227272727272727</data>
-      <data key="e_from_betweeness">4.13939393939394</data>
-      <data key="e_to_degree">7</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0277777777777778</data>
-      <data key="e_to_betweeness">50.4848484848485</data>
-    </edge>
-    <edge source="n3" target="n7">
-      <data key="e_estimate">0.628571428571429</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00299382080718136</data>
-      <data key="e_q.value">0.0258557251529299</data>
-      <data key="e_from_degree">8</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.03125</data>
-      <data key="e_from_betweeness">74.5560606060606</data>
-      <data key="e_to_degree">7</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0277777777777778</data>
-      <data key="e_to_betweeness">50.4848484848485</data>
-    </edge>
-    <edge source="n6" target="n7">
-      <data key="e_estimate">0.790977443609023</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">3.29187272800624e-05</data>
-      <data key="e_q.value">0.00104242636386864</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0256410256410256</data>
-      <data key="e_from_betweeness">3.5</data>
-      <data key="e_to_degree">7</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0277777777777778</data>
-      <data key="e_to_betweeness">50.4848484848485</data>
-    </edge>
-    <edge source="n8" target="n9">
-      <data key="e_estimate">-0.466165413533835</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.0382904988763051</data>
-      <data key="e_q.value">0.196626886121567</data>
-      <data key="e_from_degree">5</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0217391304347826</data>
-      <data key="e_from_betweeness">7.61363636363637</data>
-      <data key="e_to_degree">3</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.02</data>
-      <data key="e_to_betweeness">4.34848484848485</data>
-    </edge>
-    <edge source="n7" target="n8">
-      <data key="e_estimate">0.730827067669173</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.000252151341509688</data>
-      <data key="e_q.value">0.00532319498742674</data>
-      <data key="e_from_degree">7</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0277777777777778</data>
-      <data key="e_from_betweeness">50.4848484848485</data>
-      <data key="e_to_degree">5</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0217391304347826</data>
-      <data key="e_to_betweeness">7.61363636363637</data>
-    </edge>
-    <edge source="n8" target="n10">
-      <data key="e_estimate">0.675187969924812</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00108894262579895</data>
-      <data key="e_q.value">0.01379327326012</data>
-      <data key="e_from_degree">5</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0217391304347826</data>
-      <data key="e_from_betweeness">7.61363636363637</data>
-      <data key="e_to_degree">3</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0163934426229508</data>
-      <data key="e_to_betweeness">0</data>
-    </edge>
-    <edge source="n1" target="n3">
-      <data key="e_estimate">0.604511278195489</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00475310082409375</data>
-      <data key="e_q.value">0.0376287148574088</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">8</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.03125</data>
-      <data key="e_to_betweeness">74.5560606060606</data>
-    </edge>
-    <edge source="n1" target="n2">
-      <data key="e_estimate">0.756390977443609</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.000113841951190796</data>
-      <data key="e_q.value">0.00270374634078141</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
-      <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">6</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0238095238095238</data>
-      <data key="e_to_betweeness">5.08333333333333</data>
-    </edge>
-    <edge source="n2" target="n3">
-      <data key="e_estimate">0.545864661654135</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.0127836288762047</data>
-      <data key="e_q.value">0.0809629828826295</data>
-      <data key="e_from_degree">6</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0238095238095238</data>
-      <data key="e_from_betweeness">5.08333333333333</data>
-      <data key="e_to_degree">8</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.03125</data>
-      <data key="e_to_betweeness">74.5560606060606</data>
-    </edge>
-    <edge source="n11" target="n12">
-      <data key="e_estimate">0.628571428571429</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00299382080718136</data>
-      <data key="e_q.value">0.0258557251529299</data>
-      <data key="e_from_degree">3</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.024390243902439</data>
-      <data key="e_from_betweeness">59</data>
-      <data key="e_to_degree">2</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0185185185185185</data>
-      <data key="e_to_betweeness">32</data>
-    </edge>
-    <edge source="n9" target="n13">
+    <edge source="n8" target="n17">
       <data key="e_estimate">0.687218045112782</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.000814936942175937</data>
       <data key="e_q.value">0.0119106168471868</data>
-      <data key="e_from_degree">3</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.02</data>
-      <data key="e_from_betweeness">4.34848484848485</data>
-      <data key="e_to_degree">3</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0238095238095238</data>
-      <data key="e_to_betweeness">10.8484848484848</data>
+      <data key="e_from_feature">acetylene degradation</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">1</data>
+      <data key="e_from_component">2</data>
+      <data key="e_from_closeness">0.00308641975308642</data>
+      <data key="e_from_betweeness">0</data>
+      <data key="e_to_feature">4-aminobutanoate degradation V</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">1</data>
+      <data key="e_to_component">2</data>
+      <data key="e_to_closeness">0.00308641975308642</data>
+      <data key="e_to_betweeness">0</data>
     </edge>
-    <edge source="n2" target="n13">
-      <data key="e_estimate">-0.484210526315789</data>
+    <edge source="n5" target="n6">
+      <data key="e_estimate">0.58796992481203</data>
       <data key="e_n">20</data>
-      <data key="e_p.value">0.0305084935506665</data>
-      <data key="e_q.value">0.180645680824727</data>
-      <data key="e_from_degree">6</data>
+      <data key="e_p.value">0.00640017087619538</data>
+      <data key="e_q.value">0.0450382394991527</data>
+      <data key="e_from_feature">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0238095238095238</data>
-      <data key="e_from_betweeness">5.08333333333333</data>
-      <data key="e_to_degree">3</data>
+      <data key="e_from_closeness">0.0140845070422535</data>
+      <data key="e_from_betweeness">5.36666666666667</data>
+      <data key="e_to_feature">4-deoxy-L-threo-hex-4-enopyranuronate degradation</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0238095238095238</data>
-      <data key="e_to_betweeness">10.8484848484848</data>
+      <data key="e_to_closeness">0.012987012987013</data>
+      <data key="e_to_betweeness">4.36666666666667</data>
     </edge>
-    <edge source="n3" target="n13">
-      <data key="e_estimate">-0.466165413533835</data>
+    <edge source="n4" target="n6">
+      <data key="e_estimate">0.457142857142857</data>
       <data key="e_n">20</data>
-      <data key="e_p.value">0.0382904988763051</data>
-      <data key="e_q.value">0.196626886121567</data>
-      <data key="e_from_degree">8</data>
+      <data key="e_p.value">0.0427185106278771</data>
+      <data key="e_q.value">0.202912925482416</data>
+      <data key="e_from_feature">5-aminoimidazole ribonucleotide biosynthesis I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.03125</data>
-      <data key="e_from_betweeness">74.5560606060606</data>
-      <data key="e_to_degree">3</data>
+      <data key="e_from_closeness">0.0142857142857143</data>
+      <data key="e_from_betweeness">49</data>
+      <data key="e_to_feature">4-deoxy-L-threo-hex-4-enopyranuronate degradation</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0238095238095238</data>
-      <data key="e_to_betweeness">10.8484848484848</data>
+      <data key="e_to_closeness">0.012987012987013</data>
+      <data key="e_to_betweeness">4.36666666666667</data>
     </edge>
-    <edge source="n7" target="n14">
+    <edge source="n2" target="n4">
+      <data key="e_estimate">0.730827067669173</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.000252151341509688</data>
+      <data key="e_q.value">0.00532319498742674</data>
+      <data key="e_from_feature">5-aminoimidazole ribonucleotide biosynthesis II</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">4</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">5-aminoimidazole ribonucleotide biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0142857142857143</data>
+      <data key="e_to_betweeness">49</data>
+    </edge>
+    <edge source="n1" target="n4">
       <data key="e_estimate">0.663157894736842</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.00143681486510738</data>
       <data key="e_q.value">0.0170621765231502</data>
-      <data key="e_from_degree">7</data>
+      <data key="e_from_feature">adenine and adenosine salvage III</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">4</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0277777777777778</data>
-      <data key="e_from_betweeness">50.4848484848485</data>
-      <data key="e_to_degree">4</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">5-aminoimidazole ribonucleotide biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0208333333333333</data>
-      <data key="e_to_betweeness">4.27272727272727</data>
+      <data key="e_to_closeness">0.0142857142857143</data>
+      <data key="e_to_betweeness">49</data>
     </edge>
-    <edge source="n8" target="n14">
-      <data key="e_estimate">0.891729323308271</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">1.30295701339378e-07</data>
-      <data key="e_q.value">8.25206108482727e-06</data>
-      <data key="e_from_degree">5</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0217391304347826</data>
-      <data key="e_from_betweeness">7.61363636363637</data>
-      <data key="e_to_degree">4</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0208333333333333</data>
-      <data key="e_to_betweeness">4.27272727272727</data>
-    </edge>
-    <edge source="n10" target="n14">
-      <data key="e_estimate">0.843609022556391</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">2.96912718633635e-06</data>
-      <data key="e_q.value">0.000112826833080781</data>
-      <data key="e_from_degree">3</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0163934426229508</data>
-      <data key="e_from_betweeness">0</data>
-      <data key="e_to_degree">4</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0208333333333333</data>
-      <data key="e_to_betweeness">4.27272727272727</data>
-    </edge>
-    <edge source="n3" target="n11">
-      <data key="e_estimate">0.487218045112782</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.0293419919037081</data>
-      <data key="e_q.value">0.179838014893695</data>
-      <data key="e_from_degree">8</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.03125</data>
-      <data key="e_from_betweeness">74.5560606060606</data>
-      <data key="e_to_degree">3</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.024390243902439</data>
-      <data key="e_to_betweeness">59</data>
-    </edge>
-    <edge source="n11" target="n15">
-      <data key="e_estimate">0.649624060150376</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.00193533328444007</data>
-      <data key="e_q.value">0.0199871355911285</data>
-      <data key="e_from_degree">3</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.024390243902439</data>
-      <data key="e_from_betweeness">59</data>
-      <data key="e_to_degree">1</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0172413793103448</data>
-      <data key="e_to_betweeness">0</data>
-    </edge>
-    <edge source="n9" target="n16">
-      <data key="e_estimate">-0.643609022556391</data>
-      <data key="e_n">20</data>
-      <data key="e_p.value">0.0021993664472677</data>
-      <data key="e_q.value">0.0208939812490432</data>
-      <data key="e_from_degree">3</data>
-      <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.02</data>
-      <data key="e_from_betweeness">4.34848484848485</data>
-      <data key="e_to_degree">5</data>
-      <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0217391304347826</data>
-      <data key="e_to_betweeness">7.61363636363637</data>
-    </edge>
-    <edge source="n7" target="n16">
+    <edge source="n0" target="n4">
       <data key="e_estimate">0.607518796992481</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.00449510100174888</data>
       <data key="e_q.value">0.0371334430579255</data>
-      <data key="e_from_degree">7</data>
+      <data key="e_from_feature">adenosine ribonucleotides de novo biosynthesis</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">4</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0277777777777778</data>
-      <data key="e_from_betweeness">50.4848484848485</data>
-      <data key="e_to_degree">5</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">5-aminoimidazole ribonucleotide biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0217391304347826</data>
-      <data key="e_to_betweeness">7.61363636363637</data>
+      <data key="e_to_closeness">0.0142857142857143</data>
+      <data key="e_to_betweeness">49</data>
     </edge>
-    <edge source="n8" target="n16">
+    <edge source="n1" target="n2">
+      <data key="e_estimate">0.891729323308271</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">1.30295701339378e-07</data>
+      <data key="e_q.value">8.25206108482727e-06</data>
+      <data key="e_from_feature">adenine and adenosine salvage III</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">4</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">5-aminoimidazole ribonucleotide biosynthesis II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">4</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0123456790123457</data>
+      <data key="e_to_betweeness">4.33333333333333</data>
+    </edge>
+    <edge source="n0" target="n2">
       <data key="e_estimate">0.91578947368421</data>
       <data key="e_n">20</data>
       <data key="e_p.value">1.48530596710827e-08</data>
       <data key="e_q.value">1.41104066875286e-06</data>
-      <data key="e_from_degree">5</data>
+      <data key="e_from_feature">adenosine ribonucleotides de novo biosynthesis</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">4</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0217391304347826</data>
-      <data key="e_from_betweeness">7.61363636363637</data>
-      <data key="e_to_degree">5</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">5-aminoimidazole ribonucleotide biosynthesis II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">4</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0217391304347826</data>
-      <data key="e_to_betweeness">7.61363636363637</data>
+      <data key="e_to_closeness">0.0123456790123457</data>
+      <data key="e_to_betweeness">4.33333333333333</data>
     </edge>
-    <edge source="n10" target="n16">
+    <edge source="n2" target="n3">
+      <data key="e_estimate">0.675187969924812</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.00108894262579895</data>
+      <data key="e_q.value">0.01379327326012</data>
+      <data key="e_from_feature">5-aminoimidazole ribonucleotide biosynthesis II</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">4</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">3</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0106382978723404</data>
+      <data key="e_to_betweeness">0</data>
+    </edge>
+    <edge source="n1" target="n3">
+      <data key="e_estimate">0.843609022556391</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">2.96912718633635e-06</data>
+      <data key="e_q.value">0.000112826833080781</data>
+      <data key="e_from_feature">adenine and adenosine salvage III</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">4</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">3</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0106382978723404</data>
+      <data key="e_to_betweeness">0</data>
+    </edge>
+    <edge source="n0" target="n3">
       <data key="e_estimate">0.715789473684211</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.000386913278463075</data>
       <data key="e_q.value">0.00696527209103555</data>
-      <data key="e_from_degree">3</data>
+      <data key="e_from_feature">adenosine ribonucleotides de novo biosynthesis</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">4</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0163934426229508</data>
-      <data key="e_from_betweeness">0</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">3</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0106382978723404</data>
+      <data key="e_to_betweeness">0</data>
+    </edge>
+    <edge source="n10" target="n12">
+      <data key="e_estimate">0.690225563909774</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.000756394837833962</data>
+      <data key="e_q.value">0.0119106168471868</data>
+      <data key="e_from_feature">(5Z)-dodec-5-enoate biosynthesis</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">6</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0131578947368421</data>
+      <data key="e_from_betweeness">1.2</data>
+      <data key="e_to_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis III (Chlamydia)</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0131578947368421</data>
+      <data key="e_to_betweeness">1.2</data>
+    </edge>
+    <edge source="n5" target="n12">
+      <data key="e_estimate">0.768421052631579</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">7.5718811752612e-05</data>
+      <data key="e_q.value">0.00205522489042804</data>
+      <data key="e_from_feature">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0140845070422535</data>
+      <data key="e_from_betweeness">5.36666666666667</data>
+      <data key="e_to_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis III (Chlamydia)</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0131578947368421</data>
+      <data key="e_to_betweeness">1.2</data>
+    </edge>
+    <edge source="n6" target="n12">
+      <data key="e_estimate">0.454135338345865</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.0442791041628947</data>
+      <data key="e_q.value">0.205195848559756</data>
+      <data key="e_from_feature">4-deoxy-L-threo-hex-4-enopyranuronate degradation</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">6</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.012987012987013</data>
+      <data key="e_from_betweeness">4.36666666666667</data>
+      <data key="e_to_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis III (Chlamydia)</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0131578947368421</data>
+      <data key="e_to_betweeness">1.2</data>
+    </edge>
+    <edge source="n11" target="n12">
+      <data key="e_estimate">0.756390977443609</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.000113841951190796</data>
+      <data key="e_q.value">0.00270374634078141</data>
+      <data key="e_from_feature">8-amino-7-oxononanoate biosynthesis I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">5</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.012987012987013</data>
+      <data key="e_from_betweeness">1</data>
+      <data key="e_to_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis III (Chlamydia)</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0131578947368421</data>
+      <data key="e_to_betweeness">1.2</data>
+    </edge>
+    <edge source="n9" target="n12">
+      <data key="e_estimate">0.479699248120301</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.0323260692002143</data>
+      <data key="e_q.value">0.180645680824727</data>
+      <data key="e_from_feature">adenosylcobalamin salvage from cobinamide I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">6</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0138888888888889</data>
+      <data key="e_from_betweeness">3.5</data>
+      <data key="e_to_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis III (Chlamydia)</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0131578947368421</data>
+      <data key="e_to_betweeness">1.2</data>
+    </edge>
+    <edge source="n10" target="n11">
+      <data key="e_estimate">0.942857142857143</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">5.00932628710871e-10</data>
+      <data key="e_q.value">9.51771994550654e-08</data>
+      <data key="e_from_feature">(5Z)-dodec-5-enoate biosynthesis</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">6</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0131578947368421</data>
+      <data key="e_from_betweeness">1.2</data>
+      <data key="e_to_feature">8-amino-7-oxononanoate biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
       <data key="e_to_degree">5</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0217391304347826</data>
-      <data key="e_to_betweeness">7.61363636363637</data>
+      <data key="e_to_closeness">0.012987012987013</data>
+      <data key="e_to_betweeness">1</data>
     </edge>
-    <edge source="n14" target="n16">
+    <edge source="n5" target="n11">
+      <data key="e_estimate">0.714285714285714</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.000403252594744163</data>
+      <data key="e_q.value">0.00696527209103555</data>
+      <data key="e_from_feature">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0140845070422535</data>
+      <data key="e_from_betweeness">5.36666666666667</data>
+      <data key="e_to_feature">8-amino-7-oxononanoate biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">5</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.012987012987013</data>
+      <data key="e_to_betweeness">1</data>
+    </edge>
+    <edge source="n6" target="n11">
+      <data key="e_estimate">0.64812030075188</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.00199871355911285</data>
+      <data key="e_q.value">0.0199871355911285</data>
+      <data key="e_from_feature">4-deoxy-L-threo-hex-4-enopyranuronate degradation</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">6</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.012987012987013</data>
+      <data key="e_from_betweeness">4.36666666666667</data>
+      <data key="e_to_feature">8-amino-7-oxononanoate biosynthesis I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">5</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.012987012987013</data>
+      <data key="e_to_betweeness">1</data>
+    </edge>
+    <edge source="n13" target="n16">
+      <data key="e_estimate">0.487218045112782</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.0293419919037081</data>
+      <data key="e_q.value">0.179838014893695</data>
+      <data key="e_from_feature">adenosine deoxyribonucleotides de novo biosynthesis II</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0149253731343284</data>
+      <data key="e_from_betweeness">59.3666666666667</data>
+      <data key="e_to_feature">acetyl-CoA fermentation to butanoate II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">3</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0135135135135135</data>
+      <data key="e_to_betweeness">51</data>
+    </edge>
+    <edge source="n7" target="n16">
+      <data key="e_estimate">0.649624060150376</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.00193533328444007</data>
+      <data key="e_q.value">0.0199871355911285</data>
+      <data key="e_from_feature">adenosine nucleotides degradation II</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">1</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0112359550561798</data>
+      <data key="e_from_betweeness">0</data>
+      <data key="e_to_feature">acetyl-CoA fermentation to butanoate II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">3</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0135135135135135</data>
+      <data key="e_to_betweeness">51</data>
+    </edge>
+    <edge source="n0" target="n1">
       <data key="e_estimate">0.879699248120301</data>
       <data key="e_n">20</data>
       <data key="e_p.value">3.21366974365134e-07</data>
       <data key="e_q.value">1.52649312823439e-05</data>
+      <data key="e_from_feature">adenosine ribonucleotides de novo biosynthesis</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
       <data key="e_from_degree">4</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0208333333333333</data>
-      <data key="e_from_betweeness">4.27272727272727</data>
-      <data key="e_to_degree">5</data>
+      <data key="e_from_closeness">0.0123456790123457</data>
+      <data key="e_from_betweeness">4.33333333333333</data>
+      <data key="e_to_feature">adenine and adenosine salvage III</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">4</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0217391304347826</data>
-      <data key="e_to_betweeness">7.61363636363637</data>
+      <data key="e_to_closeness">0.0123456790123457</data>
+      <data key="e_to_betweeness">4.33333333333333</data>
     </edge>
-    <edge source="n0" target="n6">
-      <data key="e_estimate">0.479699248120301</data>
+    <edge source="n10" target="n13">
+      <data key="e_estimate">0.565413533834586</data>
       <data key="e_n">20</data>
-      <data key="e_p.value">0.0323260692002143</data>
-      <data key="e_q.value">0.180645680824727</data>
+      <data key="e_p.value">0.00937431775063158</data>
+      <data key="e_q.value">0.0614179438834483</data>
+      <data key="e_from_feature">(5Z)-dodec-5-enoate biosynthesis</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
       <data key="e_from_degree">6</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
+      <data key="e_from_closeness">0.0131578947368421</data>
       <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">6</data>
+      <data key="e_to_feature">adenosine deoxyribonucleotides de novo biosynthesis II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0256410256410256</data>
-      <data key="e_to_betweeness">3.5</data>
+      <data key="e_to_closeness">0.0149253731343284</data>
+      <data key="e_to_betweeness">59.3666666666667</data>
     </edge>
-    <edge source="n1" target="n6">
-      <data key="e_estimate">0.479699248120301</data>
+    <edge source="n5" target="n13">
+      <data key="e_estimate">0.654135338345865</data>
       <data key="e_n">20</data>
-      <data key="e_p.value">0.0323260692002143</data>
-      <data key="e_q.value">0.180645680824727</data>
+      <data key="e_p.value">0.00175519541284319</data>
+      <data key="e_q.value">0.0196168899082474</data>
+      <data key="e_from_feature">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0140845070422535</data>
+      <data key="e_from_betweeness">5.36666666666667</data>
+      <data key="e_to_feature">adenosine deoxyribonucleotides de novo biosynthesis II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0149253731343284</data>
+      <data key="e_to_betweeness">59.3666666666667</data>
+    </edge>
+    <edge source="n4" target="n13">
+      <data key="e_estimate">0.628571428571429</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.00299382080718136</data>
+      <data key="e_q.value">0.0258557251529299</data>
+      <data key="e_from_feature">5-aminoimidazole ribonucleotide biosynthesis I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0142857142857143</data>
+      <data key="e_from_betweeness">49</data>
+      <data key="e_to_feature">adenosine deoxyribonucleotides de novo biosynthesis II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0149253731343284</data>
+      <data key="e_to_betweeness">59.3666666666667</data>
+    </edge>
+    <edge source="n12" target="n13">
+      <data key="e_estimate">0.604511278195489</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.00475310082409375</data>
+      <data key="e_q.value">0.0376287148574088</data>
+      <data key="e_from_feature">6-hydroxymethyl-dihydropterin diphosphate biosynthesis III (Chlamydia)</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
       <data key="e_from_degree">6</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0232558139534884</data>
+      <data key="e_from_closeness">0.0131578947368421</data>
       <data key="e_from_betweeness">1.2</data>
-      <data key="e_to_degree">6</data>
+      <data key="e_to_feature">adenosine deoxyribonucleotides de novo biosynthesis II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0256410256410256</data>
-      <data key="e_to_betweeness">3.5</data>
+      <data key="e_to_closeness">0.0149253731343284</data>
+      <data key="e_to_betweeness">59.3666666666667</data>
     </edge>
-    <edge source="n3" target="n6">
+    <edge source="n11" target="n13">
+      <data key="e_estimate">0.545864661654135</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.0127836288762047</data>
+      <data key="e_q.value">0.0809629828826295</data>
+      <data key="e_from_feature">8-amino-7-oxononanoate biosynthesis I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">5</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.012987012987013</data>
+      <data key="e_from_betweeness">1</data>
+      <data key="e_to_feature">adenosine deoxyribonucleotides de novo biosynthesis II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0149253731343284</data>
+      <data key="e_to_betweeness">59.3666666666667</data>
+    </edge>
+    <edge source="n9" target="n13">
       <data key="e_estimate">0.589473684210526</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.00623336910307692</data>
       <data key="e_q.value">0.0450382394991527</data>
-      <data key="e_from_degree">8</data>
+      <data key="e_from_feature">adenosylcobalamin salvage from cobinamide I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">6</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.03125</data>
-      <data key="e_from_betweeness">74.5560606060606</data>
+      <data key="e_from_closeness">0.0138888888888889</data>
+      <data key="e_from_betweeness">3.5</data>
+      <data key="e_to_feature">adenosine deoxyribonucleotides de novo biosynthesis II</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">7</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0149253731343284</data>
+      <data key="e_to_betweeness">59.3666666666667</data>
+    </edge>
+    <edge source="n5" target="n9">
+      <data key="e_estimate">0.46015037593985</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.0412007178019544</data>
+      <data key="e_q.value">0.200721445701829</data>
+      <data key="e_from_feature">4-amino-2-methyl-5-phosphomethylpyrimidine biosynthesis (yeast)</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0140845070422535</data>
+      <data key="e_from_betweeness">5.36666666666667</data>
+      <data key="e_to_feature">adenosylcobalamin salvage from cobinamide I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
       <data key="e_to_degree">6</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0256410256410256</data>
+      <data key="e_to_closeness">0.0138888888888889</data>
       <data key="e_to_betweeness">3.5</data>
     </edge>
-    <edge source="n17" target="n18">
-      <data key="e_estimate">0.463157894736842</data>
+    <edge source="n6" target="n9">
+      <data key="e_estimate">0.682706766917293</data>
       <data key="e_n">20</data>
-      <data key="e_p.value">0.0397249664579358</data>
-      <data key="e_q.value">0.198624832289679</data>
-      <data key="e_from_degree">1</data>
+      <data key="e_p.value">0.000909908632472645</data>
+      <data key="e_q.value">0.0123487600121287</data>
+      <data key="e_from_feature">4-deoxy-L-threo-hex-4-enopyranuronate degradation</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">6</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0116279069767442</data>
-      <data key="e_from_betweeness">0</data>
+      <data key="e_from_closeness">0.012987012987013</data>
+      <data key="e_from_betweeness">4.36666666666667</data>
+      <data key="e_to_feature">adenosylcobalamin salvage from cobinamide I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0138888888888889</data>
+      <data key="e_to_betweeness">3.5</data>
+    </edge>
+    <edge source="n4" target="n9">
+      <data key="e_estimate">0.790977443609023</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">3.29187272800624e-05</data>
+      <data key="e_q.value">0.00104242636386864</data>
+      <data key="e_from_feature">5-aminoimidazole ribonucleotide biosynthesis I</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">7</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0142857142857143</data>
+      <data key="e_from_betweeness">49</data>
+      <data key="e_to_feature">adenosylcobalamin salvage from cobinamide I</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">6</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0138888888888889</data>
+      <data key="e_to_betweeness">3.5</data>
+    </edge>
+    <edge source="n16" target="n18">
+      <data key="e_estimate">0.628571428571429</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.00299382080718136</data>
+      <data key="e_q.value">0.0258557251529299</data>
+      <data key="e_from_feature">acetyl-CoA fermentation to butanoate II</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">3</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.0135135135135135</data>
+      <data key="e_from_betweeness">51</data>
+      <data key="e_to_feature">all-trans-farnesol biosynthesis</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
       <data key="e_to_degree">2</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0144927536231884</data>
-      <data key="e_to_betweeness">17</data>
+      <data key="e_to_closeness">0.0117647058823529</data>
+      <data key="e_to_betweeness">28</data>
     </edge>
-    <edge source="n12" target="n18">
+    <edge source="n15" target="n18">
       <data key="e_estimate">0.47218045112782</data>
       <data key="e_n">20</data>
       <data key="e_p.value">0.0355423936719319</data>
       <data key="e_q.value">0.192944422790487</data>
+      <data key="e_from_feature">anhydromuropeptides recycling</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
       <data key="e_from_degree">2</data>
       <data key="e_from_component">1</data>
-      <data key="e_from_closeness">0.0185185185185185</data>
-      <data key="e_from_betweeness">32</data>
+      <data key="e_from_closeness">0.0102040816326531</data>
+      <data key="e_from_betweeness">15</data>
+      <data key="e_to_feature">all-trans-farnesol biosynthesis</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
       <data key="e_to_degree">2</data>
       <data key="e_to_component">1</data>
-      <data key="e_to_closeness">0.0144927536231884</data>
-      <data key="e_to_betweeness">17</data>
+      <data key="e_to_closeness">0.0117647058823529</data>
+      <data key="e_to_betweeness">28</data>
+    </edge>
+    <edge source="n14" target="n15">
+      <data key="e_estimate">0.463157894736842</data>
+      <data key="e_n">20</data>
+      <data key="e_p.value">0.0397249664579358</data>
+      <data key="e_q.value">0.198624832289679</data>
+      <data key="e_from_feature">anaerobic energy metabolism (invertebrates, cytosol)</data>
+      <data key="e_from_feature_type">pathway</data>
+      <data key="e_from_kingdom">NA</data>
+      <data key="e_from_phylum">NA</data>
+      <data key="e_from_order">NA</data>
+      <data key="e_from_class">NA</data>
+      <data key="e_from_family">NA</data>
+      <data key="e_from_genus">NA</data>
+      <data key="e_from_species">NA</data>
+      <data key="e_from_degree">1</data>
+      <data key="e_from_component">1</data>
+      <data key="e_from_closeness">0.00884955752212389</data>
+      <data key="e_from_betweeness">0</data>
+      <data key="e_to_feature">anhydromuropeptides recycling</data>
+      <data key="e_to_feature_type">pathway</data>
+      <data key="e_to_kingdom">NA</data>
+      <data key="e_to_phylum">NA</data>
+      <data key="e_to_order">NA</data>
+      <data key="e_to_class">NA</data>
+      <data key="e_to_family">NA</data>
+      <data key="e_to_genus">NA</data>
+      <data key="e_to_species">NA</data>
+      <data key="e_to_degree">2</data>
+      <data key="e_to_component">1</data>
+      <data key="e_to_closeness">0.0102040816326531</data>
+      <data key="e_to_betweeness">15</data>
     </edge>
   </graph>
 </graphml>

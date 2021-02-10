@@ -396,11 +396,28 @@ This dinosaur dataset tells us that one can create almost any pattern having the
 
 ![](https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif)
 
+# Ensemble correlation
+
+Often, an edge is only considered if it is significant in multiple correlation methods.
+These *ensemble approaches* tend to be more robust having less false positive interactions:
+
+```{r}
+loadd(coabundances)
+
+graphs <-
+  coabundances %>%
+  filter(feature_type == "pathway" & disease == "CRC") %>%
+  select(method, coabundance) %>%
+  deframe()
+
+ensemble_coabundance(graphs$spearman, graphs$banocc, method = "intersection")
+```
+
+
 # Which correlation?
 
 Correlation detection strategies in microbial data sets vary widely in sensitivity and precision.
 An overview is given in [@weiss2016correlation].
-There are also ensemble approaches in which an edge is only considered if it was found significant in multiple methods.
 
 # Drake workflow
 
