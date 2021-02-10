@@ -2,7 +2,7 @@
 
 This is the repository for the workshop at [MiCom 2021](https://www.micom.uni-jena.de/) about taxonomic correlation analyses in metagenomics using R.
 
-## Content
+## Contents
 
 - [Raw data directory](data) with example data and meta data about species and pathway abundances in helthy and cancer subjects based on [curatedMetagenomicData](https://waldronlab.io/curatedMetagenomicData/)
 - [Installation script](src/install.R) for R packages including [BAnOCC](https://github.com/biobakery/banocc), [SpiecEasi](https://github.com/zdk123/SpiecEasi) and [drake](https://github.com/ropensci/drake)
@@ -14,7 +14,7 @@ This is the repository for the workshop at [MiCom 2021](https://www.micom.uni-je
 - [Library](src/lib) with wrapper functions to call various correlation methods with a uniform interface
 - [BibTeX](src/literature.bib) containing literature used
 
-## Get Started
+## Get started
 
 Clone this repository with these shell commands.
 GNU Make can be used to build and run the docker container:
