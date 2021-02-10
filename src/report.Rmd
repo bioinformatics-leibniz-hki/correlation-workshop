@@ -9,13 +9,13 @@ output:
     dev: png
     toc: true
     toc_depth: 4
-    toc_float: true
+    toc_float: false
 theme: united
 df_print: kable
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.fullwidth=TRUE)
 setwd(here::here()) # working directory is those containing this file, otherwise
 source(here::here("src/setup.R"))
 ```
@@ -43,8 +43,14 @@ loadd(intra_feature_type_coabundances)
 
 intra_feature_type_coabundances %>%
   mutate(
-    n_nodes = coabundance %>% map_int(~ {.x$graph %>% igraph::gorder()}),
-    n_edges = coabundance %>% map_int(~ {.x$graph %>% igraph::gsize() %>% as.integer()})
+    n_nodes = coabundance %>% map_int(~ {
+      .x %>% igraph::gorder()
+    }),
+    n_edges = coabundance %>% map_int(~ {
+      .x %>%
+        igraph::gsize() %>%
+        as.integer()
+    })
   ) %>%
   select(-coabundance) %>%
   filter(n_nodes > 0 | n_edges > 0) %>%
@@ -58,7 +64,8 @@ intra_feature_type_coabundances %>%
 loadd(intra_feature_type_network_plots)
 
 intra_feature_type_network_plots %<>%
-  mutate(plot = list(plot, feature_type, disease) %>% pmap(~ ..1 + labs(title = paste0(..2, "-", ..3)))) %>%
+  mutate(plot = list(plot, feature_type, disease) %>%
+    pmap(~ ..1 + labs(title = paste0(..2, "-", ..3)))) %>%
   group_by(method) %>%
   do(plots = .$plot %>% wrap_plots() + plot_layout(guides = "collect")) %>%
   deframe()
@@ -76,16 +83,16 @@ intra_feature_type_network_plots$spearman
 intra_feature_type_network_plots$sparcc
 ```
 
-### MB
+### BAnOCC
 
 ```{r, echo=FALSE}
-intra_feature_type_network_plots$mb
+intra_feature_type_network_plots$banocc
 ```
 
 
-## Node topology  {.tabset}
+## Node topology {.tabset}
 
-```{r node_topology, echo=FALSE}
+```{r, echo=FALSE}
 loadd(intra_feature_type_topology_plots)
 intra_feature_type_topology_plots %<>% deframe()
 ```
@@ -104,16 +111,8 @@ intra_feature_type_topology_plots$spearman
 intra_feature_type_topology_plots$sparcc
 ```
 
-### MB
+### BAnOCC
 
 ```{r, echo=FALSE}
-intra_feature_type_topology_plots$mb
+intra_feature_type_topology_plots$banocc
 ```
-
-
-# Inter feature type coabundances
-
-```{r}
-loadd(inter_feature_type_coabundances)
-```
-
