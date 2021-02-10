@@ -33,10 +33,11 @@ coabundance_plan <- drake_plan(
 
   banocc_params = list(
     compiled_banocc_model = compiled_banocc_model,
-    conf_alpha = 0.1,
-    iter = 50,
-    warmup = 25,
-    thin = 2
+    conf_alpha = 0.05,
+    chains = 5,
+    iter = 10e3,
+    warmup = 5e3,
+    thin = 10
   ),
 
   compiled_banocc_model = rstan::stan_model(model_code = banocc::banocc_model),
