@@ -29,7 +29,12 @@ coabundance <- function(edges, nodes = NULL, method = NULL, max_pval = 0.05, min
   
   res <-
     graph %>%
-    tidygraph::to_undirected() %>%
+
+		# ensure simple graph
+		tidygraph::activate(edges) %>%
+		tidygraph::filter(! edge_is_multiple()) %>%
+    
+		tidygraph::to_undirected() %>%
     filter_graph(max_pval = max_pval, min_abs_estimate = min_abs_estimate) %>%
     topologize_graph() %>%
     annotate_node_attributes_in_edges()
@@ -183,7 +188,7 @@ as_tbl_graph.default <- function(cor_res, edges, nodes = NULL, method = NULL, ..
 
 #' Join two coabundances together to form an ensemble graph
 #' 
-#' @param x,y tbl_graphs to join
+#' @param x,y tbl_graphs to join. x wil be used to set the estimate
 #' @param method joining method to combine the edges. Either 'union' or 'intersection'
 ensemble_coabundance <- function(x, y, method = "intersection") {
   min_multiedges <- switch (method,
@@ -192,37 +197,57 @@ ensemble_coabundance <- function(x, y, method = "intersection") {
                             stop("Method not implemented.")
   )
   
-  
-  remove_columns <- function(graph) {
-    estimate_column <- paste0("estimate_", attr(graph, "method"))
+  annotate_method <- function(x, default_name = "x") {
+    method <- x %>% attr("method") %>% {.x <- .; ifelse(is.null(.x), default_name, .x)}
+    state <- active(x)
     
-    graph %>%
+    x %>%
       activate(edges) %>%
-      rename(!!estimate_column := estimate) %>%
-      select_at(c("from", "to", estimate_column)) %>%
-      activate(nodes) %>%
-      select(feature)
+      mutate(method = method) %>%
+      activate(!!sym(state)) # ensure idempotency
   }
   
+  selected_method <- x %>% attr("method") %>% {.x <- .; ifelse(is.null(.x), "x", .x)}
+  x <- x %>% annotate_method(default_name = "x")
+  y <- y %>% annotate_method(default_name = "y")
   
-  x <- x %>% remove_columns()
-  y <- y %>% remove_columns()
+  minimize_columns <-
+    . %>%
+    activate(edges) %>%
+    select(any_of(c("from", "to", "p.value", "estimate", "method"))) %>%
+    activate(nodes) %>%
+    select(taxon)
   
-  x %>%
-    tidygraph::graph_join(y) %>%
-    tidygraph::to_undirected() %>%
-    tidygraph::activate(edges) %>%
-    tidygraph::group_by(from, to) %>%
-    tidygraph::mutate(multiedges = n()) %>%
-    tidygraph::ungroup() %>%
-    tidygraph::filter(multiedges >= min_multiedges) %>%
-    # multi graph to simple graph
-    tidygraph::group_by(from, to) %>%
-    tidygraph::slice(1) %>%
-    # remove nodes w/o any edge %>%
-    tidygraph::activate(nodes) %>%
-    tidygraph::filter(! tidygraph::node_is_isolated()) %>%
-    # annotate
+  # join graphs
+  list(x, y) %>%
+    map(minimize_columns) %>%
+    reduce(graph_join) %>%
+    annotate_node_attributes_in_edges() %>%
+    
+    # convert to tibble
+    # required for pivoting
+    activate(edges) %>%
+    as_tibble() %>%
+    select(from = from_taxon, to = to_taxon, estimate, p.value, method) %>%
+    
+    # only keep multiedges
+    # more flexible than tidygraph::edge_is_multiple
+    group_by(from, to) %>%
+    mutate(n = n()) %>%
+    arrange(from, to) %>%
+    filter(n >= min_multiedges) %>%
+    select(-n) %>%
+    ungroup() %>%
+    
+    # polish
+    pivot_wider(names_from = method, values_from = c(estimate, p.value)) %>%
+    mutate(
+      estimate := !!sym(paste0("estimate_", selected_method)),
+      p.value := !!sym(paste0("p.value_", selected_method))
+    ) %>%
+    tidygraph::tbl_graph(edges = .) %>%
+    activate(nodes) %>%
+    rename(taxon = name) %>%
     topologize_graph() %>%
     annotate_node_attributes_in_edges()
 }
