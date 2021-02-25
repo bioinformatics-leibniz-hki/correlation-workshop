@@ -47,7 +47,15 @@ This project can be downloaded from [GitHub](https://github.com/bioinformatics-l
 git clone https://github.com/bioinformatics-leibniz-hki/correlation-workshop
 ```
 
-We can deploy a Docker container containing RStudioServer with all required tools using GNU make:
+It is highly recommended to run the analysis in an isolated and reproducible environment.
+This allows having a fixed set of software versions which can be run on any computer or server without the need of re-installation.
+We will use Docker for this:
+
+1. Ensure to activate the CPU virtualization feature in your BIOS if you're running macOS or Windows
+2. Download and install [docker](https://docs.docker.com/get-docker/)
+3. Open a terminal window and ensure that the command `docker` is available
+
+We can create and start a Docker container containing RStudioServer with all required tools using GNU make:
 
 ```{bash, eval = FALSE}
 cd correlation-workshop
@@ -132,11 +140,13 @@ Now we don't care about the size of the gradient triangles anymore.
 We can remove this effect by ranking the data and doing the linear model again:
 
 ```{r}
+scale_ranks <- . %>% rank() %>% scale()
+
 arcades_ranked <-
   arcades %>%
   mutate(
-    doctorates = doctorates %>% rank(),
-    revenue = revenue %>% rank()
+    doctorates = doctorates %>% scale_ranks(),
+    revenue = revenue %>% scale_ranks()
   )
 
 
