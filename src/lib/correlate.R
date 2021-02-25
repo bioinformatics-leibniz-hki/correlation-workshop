@@ -1,8 +1,8 @@
 correlate <- function(data, method = "spearman", ...) {
   switch(method,
     "sparcc" = correlate_sparcc(data = data, ...),
-    "mb" = correlate_spiec_easi_pulsar(data = data, method = "mb", ...),
-    "glasso" = correlate_spiec_easi_pulsar(data = data, method = "glasso", ...),
+    "mb" = correlate_spiec_easi(data = data, method = "mb", ...),
+    "glasso" = correlate_spiec_easi(data = data, method = "glasso", ...),
     "pearson" = correlate_pearson(data = data, ...),
     "spearman" = correlate_spearman(data = data, ...),
     "banocc" = correlate_banocc(data = data, ...),
@@ -59,7 +59,8 @@ correlate_banocc <- function(
     dplyr::mutate(conf_alpha = conf_alpha) %>%
     tidyr::replace_na(list(estimate = 0)) %>%
     dplyr::filter(estimate != 0) %>%
-    as_tbl_graph(...)
+    as_tbl_graph(...) %>%
+    `attr<-`(., "method", "banocc")
 }
 
 #' Coabundance analysis using SparCC as implemented in fastspar
@@ -169,7 +170,8 @@ correlate_fastspar <- function(data, iterations = 50, exclude_iterations = 10, b
     dplyr::filter(from != to) %>%
     dplyr::mutate(q.value = p.adjust(p.value, method = "fdr")) %>%
     dplyr::select(from, to, p.value, q.value, estimate) %>%
-    as_tbl_graph(...)
+    as_tbl_graph(...) %>%
+    `attr<-`(., "method", "sparcc")
 }
 
 #' Coabundance analysis using SparCC
@@ -182,21 +184,6 @@ correlate_sparcc <- function(implementation = "spiec_easi", ...) {
     stop(stringr::str_glue("{implementation} must be one of fastspar, auto, or spiec_easi"))
   )
 }
-
-correlate_spiec_easi_pulsar <- function(data, method = "mb", nlambda = 300, sel.criterion = "stars", pulsar.select = TRUE, pulsar.params = list(
-                                          thresh = 0.05,
-                                          subsample.ratio = 0.8,
-                                          ncores = getOption("mc.cores"),
-                                          rep.num = 20,
-                                          seed = 1337
-                                        ), ...) {
-  spiec.easi(
-    data = data, method = method, nlambda = nlambda, sel.criterion = sel.criterion,
-    pulsar.select = pulsar.select, pulsar.params = pulsar.params
-  ) %>%
-    as_tbl_graph(...)
-}
-
 
 #' Coabundance analysis using SparCC as implemented in SpiecEasi
 #' @param data integer matrix of abundance count data. One sample per row and one taxon per column
@@ -219,7 +206,8 @@ correlate_spiec_easi_sparcc <- function(data, iterations = 10, bootstraps = 200,
 
   list(boot = sparcc_boot, pval = sparcc_pval) %>%
     structure(class = "spiec_easi_sparcc_res") %>%
-    as_tbl_graph(...)
+    as_tbl_graph(...) %>%
+    `attr<-`(., "method", "sparcc")
 }
 
 correlate_spiec_easi <- function(
@@ -249,18 +237,22 @@ correlate_spiec_easi <- function(
     icov.select = icov.select,
     icov.select.params = icov.select.params,
     lambda.log = lambda.log
-  ) %>% as_tbl_graph(...)
+  ) %>%
+    as_tbl_graph(...) %>%
+    `attr<-`(., "method", method)
 }
 
 correlate_pearson <- function(data, ...) {
   data %>%
     Hmisc::rcorr(type = "pearson") %>%
-    as_tbl_graph(...)
+    as_tbl_graph(...) %>%
+    `attr<-`(., "method", "pearson")
 }
 
 
 correlate_spearman <- function(data, ...) {
   data %>%
     Hmisc::rcorr(type = "spearman") %>%
-    as_tbl_graph(...)
+    as_tbl_graph(...) %>%
+    `attr<-`(., "method", "spearman")
 }
