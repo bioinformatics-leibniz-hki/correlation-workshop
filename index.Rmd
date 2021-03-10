@@ -529,7 +529,13 @@ graphs <-
   select(method, coabundance) %>%
   deframe()
 
-ensemble_coabundance(graphs$spearman, graphs$banocc, method = "intersection")
+ensemble_coabundance(
+  x = graphs$spearman,
+  name_x = "spearman",
+  y = graphs$banocc,
+  name_y = "banocc",
+  method = "intersection"
+)
 ```
 
 # No correlation but covariance

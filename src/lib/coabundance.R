@@ -190,33 +190,32 @@ as_tbl_graph.default <- function(cor_res, edges, nodes = NULL, method = NULL, ..
 #' 
 #' @param x,y tbl_graphs to join. x wil be used to set the estimate
 #' @param method joining method to combine the edges. Either 'union' or 'intersection'
-ensemble_coabundance <- function(x, y, method = "intersection") {
+ensemble_coabundance <- function(x, y, method = "intersection", name_x = "x", name_y = "y") {
   min_multiedges <- switch (method,
                             "intersection" = 2,
                             "union" = 1,
                             stop("Method not implemented.")
   )
   
-  annotate_method <- function(x, default_name = "x") {
-    method <- x %>% attr("method") %>% {.x <- .; ifelse(is.null(.x), default_name, .x)}
+  annotate_method <- function(x, name = "x") {
     state <- active(x)
     
     x %>%
       activate(edges) %>%
-      mutate(method = method) %>%
+      mutate(method = name) %>%
       activate(!!sym(state)) # ensure idempotency
   }
   
   selected_method <- x %>% attr("method") %>% {.x <- .; ifelse(is.null(.x), "x", .x)}
-  x <- x %>% annotate_method(default_name = "x")
-  y <- y %>% annotate_method(default_name = "y")
+  x <- x %>% annotate_method(name = name_x)
+  y <- y %>% annotate_method(name = name_y)
   
   minimize_columns <-
     . %>%
     activate(edges) %>%
     select(any_of(c("from", "to", "p.value", "estimate", "method"))) %>%
     activate(nodes) %>%
-    select(taxon)
+    select(feature)
   
   # join graphs
   list(x, y) %>%
@@ -228,7 +227,7 @@ ensemble_coabundance <- function(x, y, method = "intersection") {
     # required for pivoting
     activate(edges) %>%
     as_tibble() %>%
-    select(from = from_taxon, to = to_taxon, estimate, p.value, method) %>%
+    select(from = from_feature, to = to_feature, estimate, p.value, method) %>%
     
     # only keep multiedges
     # more flexible than tidygraph::edge_is_multiple
@@ -247,7 +246,7 @@ ensemble_coabundance <- function(x, y, method = "intersection") {
     ) %>%
     tidygraph::tbl_graph(edges = .) %>%
     activate(nodes) %>%
-    rename(taxon = name) %>%
+    rename(feature = name) %>%
     topologize_graph() %>%
     annotate_node_attributes_in_edges()
 }
