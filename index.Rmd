@@ -94,6 +94,18 @@ arcades %>%
   )
 ```
 
+# Covariance
+
+Covariance is a simple statistical measure to quantify how much one variable *co-varies* with another.
+So why just not use covariance?
+
+```{r}
+cov(arcades$doctorates, arcades$revenue)
+```
+The result is $91.11 Doctorates * bn USD$.
+This value is hard to interpret: Is this value high or low? What does the unit mean?
+Correlation is just normalized covariance: It does not have a unit and is always in the range $[-1,1]$
+
 # Linear correlation
 
 The higher the number of computer science doctorates, the higher is the revenue in the arcade gaming market!
@@ -398,7 +410,7 @@ data(compositions_null)
 
 correlate_banocc(compositions_null)
 ```
-A comprehensive titorial is also [available](https://github.com/biobakery/banocc).
+A comprehensive tutorial is also [available](https://github.com/biobakery/banocc).
 
 # Same correlation
 
@@ -411,6 +423,13 @@ This dinosaur dataset tells us that one can create almost any pattern having the
 
 Correlation detection strategies in microbial data sets vary widely in sensitivity and precision.
 An overview is given in [@weiss2016correlation].
+
+# Causal and directional 'correlation'
+
+Correlation is a symmetric measure to quantify interactions.
+However, one might want to know who is the predator and who is the prey.
+We need absolute counts e.g. to do causal inference using Bayesian network analysis [@carr2019use].
+For instance, this can be archived by spiking the samples with marker cells of known abundance [@rao2021multi].
 
 # Drake workflow
 
