@@ -4,6 +4,7 @@ subtitle: "Micom 2021"
 author: "Daniel Loos"
 date: "`r {date()}`"
 bibliography: src/literature.bib
+link-citations: yes
 output:
   html_document:
     css: src/report.css
