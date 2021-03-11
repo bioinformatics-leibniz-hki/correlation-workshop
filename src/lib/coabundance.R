@@ -299,7 +299,7 @@ filter_graph <- function(graph, max_pval = 0.05, min_abs_estimate = NULL, remove
     graph <-
       graph %>%
       activate(edges) %>%
-      filter(estimate >= min_abs_estimate)
+      filter(abs(estimate) >= min_abs_estimate)
   }
   
   if (remove_isolated_nodes) {
