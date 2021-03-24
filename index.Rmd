@@ -511,6 +511,8 @@ plan %>% plot()
 
 The targets can be made by running the script `analyze.R`.
 It is recommended to put this as a background job of RStudio to run it in an isolated environment.
+Sometimes cache directories are not created in the first run.
+It is recommended to run the job again if it fails.
 
 ```{r, eval=FALSE}
 rstudioapi::jobRunScript("analyze.R")
