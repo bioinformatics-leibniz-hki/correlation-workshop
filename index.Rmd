@@ -279,6 +279,48 @@ cor.test(~ predator + prey, data = hunting_local, method = "pearson")
 Now we can observe the negative local correlation between the predator and the prey.
 An elaborated version of this idea is called Local similarity analysis (LSA) [@ruan2006local]
 
+# Multilevel correlation
+
+Sometimes, samples are not independent to each other but grouped.
+Examples are repeated measurements at multiple time points from the same subject or subjects grouped into different cohorts in a meta study.
+This is a fundamental violation of the assumption of statistical tests and can lead to even opposite results which is known as [Simpson's paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox).
+Here we use the R package [correlation](https://easystats.github.io/correlation/index.html) from the [easystats](https://easystats.github.io/easystats/) suite to simulate a relationship between the variables V1 and V2, which has a positive correlation within every group but a negative one on all pooled samples:
+
+```{r}
+library(correlation)
+
+data <-
+  simulate_simpson(n = 100, r = 0.8, groups = 5) %>%
+  as_tibble()
+
+data %>%
+  ggplot(aes(x = V1, y = V2)) +
+  geom_point(aes(colour = Group)) +
+  geom_smooth(aes(colour = Group), method = "lm", se = FALSE) +
+  geom_smooth(colour = "black", method = "lm", se = FALSE)
+```
+
+The group has an strong contradicting effect on the correlation between V1 and V2.
+Thus we have to control for the grouping variable (subject, cohort, etc.).
+This can be done using multilevel correlation and is analogous to use a linear mixed model (LMM) with the grouping variable treated as a random effect.
+Let's use the function `correlation` from the `correlation` package to get the Pearson correlation with and without this multilevel structure in which the sample are nested inside the groups:
+
+```{r}
+correlation(data)
+```
+
+```{r}
+correlation(data, multilevel = TRUE)
+```
+
+The effect size of $r=0.8$ was successfully recovered in the multilevel model.
+
+# More correlations
+
+There are plenty of other ways to define a correlation metric between two continious scaled variables.
+For example, there is Kendall’s rank correlation which is a more robust and convervative alternative to Spearman’s rank correlation.
+Here is an [overview](https://easystats.github.io/correlation/articles/types.html) about other types of correlations.
+
 # Species and pathway abundance in healthy and disesed cohorts
 
 Let's continue with a more realistic dataset.

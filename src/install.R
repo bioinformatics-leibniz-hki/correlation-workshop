@@ -21,7 +21,8 @@ devtools::install_cran(
     "ggpubr",
     "styler",
     "patchwork",
-    "ggraph"
+    "ggraph",
+		"correlation"
   ),
   upgrade = "never"
 )
