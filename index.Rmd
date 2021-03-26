@@ -269,6 +269,10 @@ lmer(V1 ~ V2 * (1|Group), data = data)
 It is also possible to have even more levels of samples nestings:
 If we have longitudinal data from the same subject in different hospitals we can also write `V1 ~ V2 * (hospital_id|subject_id)` to get the correlation between V1 and V2 controlled for effects related to the subjects and hospitals.
 
+An application of using partial, multilevel and SparCC correlation is given in [@pmid31142858].
+Here, age and BMI are modeled as a fixed effect for partial correlation and the subject id as a random effect for multilevel correlation between the abundances of microbes.
+Furthermore, the data was normalized using centered log-ratio (clr) to further address the compositionality of relative count data obtained by NGS machines.
+
 # Local correlation
 
 There are relationships between two variables which are statistical depended but can not be discovered using correlation test.
@@ -469,6 +473,8 @@ data(compositions_null)
 correlate_banocc(compositions_null)
 ```
 A comprehensive tutorial is also [available](https://github.com/biobakery/banocc).
+
+Another way to address the compositionality is to normalize the abundances using centered log-ratios (clr).
 
 # Same correlation
 
